@@ -34,11 +34,7 @@ GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
 GiscusLazyLoad = false
 GiscusDataMapping = "pathname"
 
-customCSS = [
-    "custom-css/custom1.scss", 
-    "custom-css/custom2.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-]
+
 
 [params.anubis2]
 enableMathGlobally = true # MathJax (default is false)
@@ -60,6 +56,16 @@ social = [
     { id = "x", url = "#" },
     { id = "youtube", url = "#" },
     { id = "bluesky", url = "#" }
+]
+
+customCSS = [
+    "custom-css/custom1.scss", 
+    "custom-css/custom2.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+]
+
+customJS = [
+    "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
 ]
 
 [[menu.main]]

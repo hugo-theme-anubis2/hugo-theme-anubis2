@@ -14,7 +14,7 @@
 
     
     <!-- Check if all params.anubis2 parameters are valid -->
-    {{ $avaliableParams := slice "enablemathglobally" "enablecopycodebutton" "enablereadmorebutton" "colortheme" "enablecolorthemeswitcher" "police" "icp" "social" }}
+    {{ $avaliableParams := slice "enablemathglobally" "enablecopycodebutton" "enablereadmorebutton" "colortheme" "enablecolorthemeswitcher" "police" "icp" "social" "customcss" "customjs" }}
     {{ range $param, $value := site.Params.Anubis2 }}
         {{ if not (in $avaliableParams $param) }}
             {{ warnf "Anubis2: params.anubis2.%v is not a valid parameter" $param }}

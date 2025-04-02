@@ -1,0 +1,32 @@
+
+{{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
+
+{{ $anubis2_customCSS := slice }}
+{{ if isset site.Params "customcss" }}
+  {{ $anubis2_customCSS = site.Params.customCSS }}
+  {{ warnf "Anubis2: The parameter 'params.customCSS' is deprecated. Use 'params.anubis2.customCSS' instead." }}
+{{ else if isset site.Params.Anubis2 "customcss" }}
+  {{ $anubis2_customCSS = site.Params.Anubis2.customCSS }}
+{{ end }}
+
+{{ range $anubis2_customCSS }}
+    <!-- Support remote custom css -->
+    {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
+      <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous">
+      {{ continue }}
+    {{ end }}
+
+    <!-- Load local custom css -->
+    {{ $r := "" }}
+    {{ with resources.Get .  }}
+      {{ $r = . }}
+    {{ else }}
+      {{ errorf "Anubis2: You defined customCSS, but './assets/%s' was not found, please check your config." . }}
+    {{ end }}
+
+    {{ if $r }}
+    {{ with $r | toCSS $opts | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{ end }}
+    {{ end }}
+{{ end }}

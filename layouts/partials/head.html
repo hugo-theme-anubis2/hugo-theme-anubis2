@@ -66,28 +66,8 @@
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/light.css") }}
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/dark.css") }}
 
-
-{{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
-{{ range site.Params.customCSS }}
-    <!-- Support remote custom css -->
-    {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
-      <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous">
-    {{ else }}
-      <!-- Load local custom css -->
-      {{ $r := "" }}
-      {{ with resources.Get .  }}
-        {{ $r = . }}
-      {{ else }}
-        {{ errorf "Anubis2: You defined customCSS, but './assets/%s' was not found, please check your config." . }}
-      {{ end }}
-
-      {{ if $r }}
-        {{ with $r | toCSS $opts | minify | fingerprint }}
-          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-        {{ end }}
-      {{ end }}
-    {{ end }}
-{{ end }}
+{{ partial "custom-css.html" . }}
+{{ partial "custom-js.html" . }}
 
 {{ if site.Params.isso.enabled }} {{/* TODO: maybe we can remove it */}}
   <style>
