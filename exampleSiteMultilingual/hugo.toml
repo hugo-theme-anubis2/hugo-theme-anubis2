@@ -25,7 +25,6 @@ paginationSinglePost = true
 colorTheme = "auto"
 colorThemeSwitcher = true
 
-readMore = false
 readNextPosts = 2
 copyCodeButton = true
 rssAsSocialIcon = true
@@ -58,6 +57,9 @@ social = [
     { id = "youtube", url = "#" },
     { id = "bluesky", url = "#" }
 ]
+
+[[params.anubis2]]
+showReadMoreButton = false
 
 [[menu.main]]
 identifier = "home"

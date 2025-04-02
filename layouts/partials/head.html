@@ -22,19 +22,20 @@
 {{ partial "favicons.html" . }}
 
 {{ $colorTheme := "light" }}
-{{ $colorThemeSwitcher := true }}
+{{ $anubis2_showColorThemeSwitcher := true }}
 
 {{ if and (isset site.Params "colortheme") (ne site.Params.colortheme "") }}
     {{ $colorTheme = site.Params.colortheme | lower }}
 {{ end }}
 
 {{ if isset site.Params "colorthemeswitcher" }}
-    {{ $colorThemeSwitcher = site.Params.colorthemeswitcher }}
-{{ else }}
-    {{ $colorThemeSwitcher = true }}
+    {{ $anubis2_showColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.showColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.Anubis2 "showcolorthemeswitcher" }}
+    {{ $anubis2_showColorThemeSwitcher = site.Params.anubis2.showColorThemeSwitcher }}
 {{ end }}
 
-{{ if or (eq $colorThemeSwitcher true) (eq $colorTheme "auto") }}
+{{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $colorTheme "auto") }}
 <style>
   body {
     visibility: hidden;
