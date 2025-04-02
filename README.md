@@ -1,12 +1,12 @@
 # Anubis2 Theme for Hugo [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/750dfb45-73dc-4a96-8920-e701e0196959/deploy-status)](https://app.netlify.com/sites/hugo-theme-anubis2/deploys)
 
-Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo.io/), check our [Demo](https://www.junyi.dev/).
+Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo.io/), check our [Demo](https://hugo-theme-anubis2.netlify.app/).
 
-![image](https://github.com/Junyi-99/hugo-theme-anubis2/assets/14367694/8d9a591b-e168-4328-a770-eb2e8f04f657)
+![image](./images/demo1.png)
 
 |                                                        Light                                                         |                                                     Dark (Code)                                                      |                                                     Dark (Math)                                                      |
 | :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
-| <img width="1166" alt="demo1" src="https://github.com/user-attachments/assets/dbdd43bc-3efe-4fdf-ab8f-f20af2cf9229"> | <img width="1112" alt="demo3" src="https://github.com/user-attachments/assets/7356ef18-00c7-44c9-91d9-0dfb9b500910"> | <img width="1166" alt="demo2" src="https://github.com/user-attachments/assets/46e19440-b054-4df9-968b-7920d74f3d80"> |
+| <img width="1166" alt="demo1" src="./images/light.png"> | <img width="1112" alt="demo3" src="./images/dark.png"> | <img width="1166" alt="demo2" src="./images/math.png"> |
 
 
 > [!IMPORTANT]  
@@ -15,7 +15,7 @@ Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo
 > 
 > **Hugo frequently changes its configuration file structure**, which may lead to compatibility issues if your configuration is outdated.
 >
-> Check the [Anubis2 template](https://github.com/Junyi-99/hugo-theme-anubis2/tree/main/exampleSiteMultilingual) for the latest config file.  
+> Check the [Anubis2 template](./exampleSiteMultilingual/) for the latest config file.  
 
 
 
@@ -41,7 +41,7 @@ For more information read the [official setup guide of Hugo](https://gohugo.io/i
 Inside the folder of your Hugo site, run:
 
 ```bash
-git submodule add https://github.com/Junyi-99/hugo-theme-anubis2.git themes/anubis2
+git submodule add https://github.com/hugo-theme-anubis2/hugo-theme-anubis2.git themes/anubis2
 ```
 
 That's all, let's configure anubis2.
@@ -69,7 +69,7 @@ style = 'base16-snazzy' # Chroma style, find more at here: https://swapoff.org/c
 
 ```
 
-You are encouraged keeping other fields as defaults and fine-tune them when you have time! (see [Full Configuration Examples](https://github.com/Junyi-99/hugo-theme-anubis2/wiki/Configuration-Example))
+You are encouraged keeping other fields as defaults and fine-tune them when you have time! (see [Full Configuration Examples](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/wiki/Configuration-Example))
 
 In the other way, you can check out the example site's [configuration file](exampleSiteMultilingual/hugo.toml)
 
@@ -93,7 +93,7 @@ git submodule update --remote
 
 ## Contributing
 
-If you find a bug or have an idea for a feature, feel free to write an [issue](https://github.com/Junyi-99/hugo-theme-anubis2/issues) or make a PR.
+If you find a bug or have an idea for a feature, feel free to write an [issue](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/issues) or make a PR.
 
 ## License
 

@@ -6,7 +6,7 @@ aliases = ["about-us", "about-hugo"]
 author = ["Hugo Authors", "Junyi"]
 +++
 
-[Anubis2](https://github.com/Junyi-99/hugo-theme-anubis2) to kolejny prosty, minimalistyczny motyw dla silnika blogowego Hugo.
+[Anubis2](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2) to kolejny prosty, minimalistyczny motyw dla silnika blogowego Hugo.
 
 Napisany w języku Go, Hugo jest statycznym generatorem stron o otwartym kodzie źródłowym dostępnym na licencji [Apache License 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE). Hugo obsługuje typy plików danych TOML, YAML i JSON, pliki treści Markdown i HTML oraz wykorzystuje skróty do dodawania bogatej zawartości. Inne godne uwagi funkcje to taksonomie, tryb wielojęzyczny, przetwarzanie obrazów, niestandardowe formaty wyjściowe, minifikacja HTML/CSS/JS i obsługa przepływów pracy Sass SCSS.
 
