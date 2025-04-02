@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 {{ $dataTheme := "" }}
 
-{{ $anubis2_showColorThemeSwitcher := true }}
+{{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
-    {{ $anubis2_showColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.showColorThemeSwitcher' instead." }}
-{{ else if isset site.Params.Anubis2 "showcolorthemeswitcher" }}
-    {{ $anubis2_showColorThemeSwitcher = site.Params.Anubis2.showColorThemeSwitcher }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.Anubis2 "enablecolorthemeswitcher" }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.Anubis2.enableColorThemeSwitcher }}
 {{ end }}
 
-{{ if and (ne site.Params.colortheme "auto") (eq $anubis2_showColorThemeSwitcher false) }}
+{{ if and (ne site.Params.colortheme "auto") (eq $anubis2_enableColorThemeSwitcher false) }}
     {{ $dataTheme := site.Params.colortheme }}
 {{ end }}
 

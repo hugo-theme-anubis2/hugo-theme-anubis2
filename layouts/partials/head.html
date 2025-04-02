@@ -36,15 +36,15 @@
 {{ end }}
 
 <!-- Check if color theme switcher is enabled -->
-{{ $anubis2_showColorThemeSwitcher := true }}
+{{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
-  {{ $anubis2_showColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-  {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.showColorThemeSwitcher' instead." }}
-{{ else if isset site.Params.Anubis2 "showcolorthemeswitcher" }}
-  {{ $anubis2_showColorThemeSwitcher = site.Params.anubis2.showColorThemeSwitcher }}
+  {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+  {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.Anubis2 "enablecolorthemeswitcher" }}
+  {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 
-{{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
+{{ if or (eq $anubis2_enableColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
 <style>
   body {
     visibility: hidden;
@@ -95,15 +95,15 @@
   </style>
 {{ end }}
 
-{{ $anubis2_showCopyCodeButton := true }}
+{{ $anubis2_enableCopyCodeButton := true }}
 {{ if isset site.Params "copycodebutton"}}
-  {{ $anubis2_showCopyCodeButton = site.Params.copyCodeButton }}
-  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated. Use 'params.anubis2.showCopyCodeButton' instead." }}
-{{ else if isset site.Params.Anubis2 "showcopycodebutton" }}
-  {{ $anubis2_showCopyCodeButton = site.Params.anubis2.showCopyCodeButton }}
+  {{ $anubis2_enableCopyCodeButton = site.Params.copyCodeButton }}
+  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated. Use 'params.anubis2.enableCopyCodeButton' instead." }}
+{{ else if isset site.Params.Anubis2 "enablecopycodebutton" }}
+  {{ $anubis2_enableCopyCodeButton = site.Params.anubis2.enableCopyCodeButton }}
 {{ end }}
 
-{{ if $anubis2_showCopyCodeButton }}
+{{ if $anubis2_enableCopyCodeButton }}
     {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/copy-code.js") }}
 {{ end }}
 

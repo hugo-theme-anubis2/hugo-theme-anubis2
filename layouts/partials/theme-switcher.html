@@ -12,17 +12,17 @@
 {{ end }}
 
 
-{{ $anubis2_showColorThemeSwitcher := true }}
+{{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
-    {{ $anubis2_showColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.showColorThemeSwitcher' instead." }}
-{{ else if isset site.Params.anubis2 "showcolorthemeswitcher" }}
-    {{ $anubis2_showColorThemeSwitcher = site.Params.anubis2.showColorThemeSwitcher }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.anubis2 "enablecolorthemeswitcher" }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 
 
-{{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
-    {{ if $anubis2_showColorThemeSwitcher }}
+{{ if or (eq $anubis2_enableColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
+    {{ if $anubis2_enableColorThemeSwitcher }}
         <div class="theme-switcher">
             {{ partial "font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
         </div>
