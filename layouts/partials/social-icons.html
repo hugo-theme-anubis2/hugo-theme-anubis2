@@ -1,6 +1,18 @@
 <ul class="social-icons noselect">
 
-{{ range $.Site.Params.Social }}
+{{ $anubis2_social := slice }} <!--empty list-->
+
+{{ if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "social") }}
+    {{ $anubis2_social = site.Params.Anubis2.social }}
+{{ else if isset site.Params "social" }}
+    {{ $anubis2_social = site.Params.Social }}
+{{ end }}
+
+{{ if site.Params.Social }}
+    {{ warnf "Anubis2: The parameter `params.social` is deprecated. Use `params.anubis2.social` instead." }}
+{{ end }}
+
+{{ range $anubis2_social }}
     {{ if and (isset $.Site.Data.social.social_icons .id) (isset . "url") }}
         <li>
             <a {{ printf "href=%q" .url | safeHTMLAttr }} title="{{ humanize .id }}" rel="me">

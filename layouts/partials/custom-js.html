@@ -1,0 +1,23 @@
+{{ $anubis2_customJS := site.Params.Anubis2.customJS }}
+
+{{ range $anubis2_customJS }}
+    <!-- Support remote custom css -->
+    {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
+      <script src="{{ . }}" crossorigin="anonymous"></script>
+      {{ continue }}
+    {{ end }}
+
+    <!-- Load local custom css -->
+    {{ $r := "" }}
+    {{ with resources.Get .  }}
+      {{ $r = . }}
+    {{ else }}
+      {{ errorf "Anubis2: You defined customJS, but './assets/%s' was not found, please check your config." . }}
+    {{ end }}
+
+    {{ if $r }}
+      {{ with $r | minify | fingerprint }}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+      {{ end }}
+    {{ end }}
+{{ end }}

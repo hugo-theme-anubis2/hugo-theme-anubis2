@@ -3,6 +3,7 @@
 <meta name="HandheldFriendly" content="True">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="theme-name" content="Anubis2">
 
 {{ partial "title.html" . }}
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
@@ -21,20 +22,30 @@
 
 {{ partial "favicons.html" . }}
 
-{{ $colorTheme := "light" }}
-{{ $colorThemeSwitcher := true }}
 
-{{ if and (isset site.Params "colortheme") (ne site.Params.colortheme "") }}
-    {{ $colorTheme = site.Params.colortheme | lower }}
+{{ $anubis2_colorTheme := "light" }}
+{{ if isset site.Params "colortheme"}}
+  {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
+  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
+{{ else if isset site.Params.Anubis2 "colortheme" }}
+  {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
 {{ end }}
-
-{{ if isset site.Params "colorthemeswitcher" }}
-    {{ $colorThemeSwitcher = site.Params.colorthemeswitcher }}
+<!-- check if colorTheme is "auto", "light", "dark" -->
+{{ if or (eq $anubis2_colorTheme "auto") (eq $anubis2_colorTheme "light") (eq $anubis2_colorTheme "dark") }}
 {{ else }}
-    {{ $colorThemeSwitcher = true }}
+  {{ errorf "Anubis2: The parameter 'params.anubis2.colorTheme' must be one of 'auto', 'light', or 'dark'. You set it to '%s'" $anubis2_colorTheme }}
 {{ end }}
 
-{{ if or (eq $colorThemeSwitcher true) (eq $colorTheme "auto") }}
+<!-- Check if color theme switcher is enabled -->
+{{ $anubis2_enableColorThemeSwitcher := true }}
+{{ if isset site.Params "colorthemeswitcher" }}
+  {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+  {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.Anubis2 "enablecolorthemeswitcher" }}
+  {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
+{{ end }}
+
+{{ if or (eq $anubis2_enableColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
 <style>
   body {
     visibility: hidden;
@@ -56,22 +67,8 @@
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/light.css") }}
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/dark.css") }}
 
-
-{{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
-{{ range site.Params.customCSS }}
-    {{ $r := "" }}
-    {{ with resources.Get .  }}
-      {{ $r = . }}
-    {{ else }}
-      {{ errorf "error: You defined customCSS, but %s was not found in the local file system, please check your config." . }}
-    {{ end }}
-
-    {{ if $r}}
-      {{ with $r | toCSS $opts | minify | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-      {{ end }}
-    {{ end }}
-{{ end }}
+{{ partial "custom-css.html" . }}
+{{ partial "custom-js.html" . }}
 
 {{ if site.Params.isso.enabled }} {{/* TODO: maybe we can remove it */}}
   <style>
@@ -85,8 +82,15 @@
   </style>
 {{ end }}
 
+{{ $anubis2_enableCopyCodeButton := true }}
+{{ if isset site.Params "copycodebutton"}}
+  {{ $anubis2_enableCopyCodeButton = site.Params.copyCodeButton }}
+  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated. Use 'params.anubis2.enableCopyCodeButton' instead." }}
+{{ else if isset site.Params.Anubis2 "enablecopycodebutton" }}
+  {{ $anubis2_enableCopyCodeButton = site.Params.anubis2.enableCopyCodeButton }}
+{{ end }}
 
-{{ if .Site.Params.copyCodeButton | default true }}
+{{ if $anubis2_enableCopyCodeButton }}
     {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/copy-code.js") }}
 {{ end }}
 

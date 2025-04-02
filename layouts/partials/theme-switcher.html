@@ -1,16 +1,28 @@
-{{ $colorTheme := "light" }}
-{{ $colorThemeSwitcher := true }}
-
-{{ if and (isset site.Params "colortheme") (ne site.Params.colortheme "") }}
-    {{ $colorTheme = site.Params.colortheme | lower }}
+{{ $anubis2_colorTheme := "light" }}
+{{ if isset site.Params "colortheme"}}
+  {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
+  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
+{{ else if isset site.Params.Anubis2 "colortheme" }}
+  {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
+{{ end }}
+<!-- check if colorTheme is "auto", "light", "dark" -->
+{{ if or (eq $anubis2_colorTheme "auto") (eq $anubis2_colorTheme "light") (eq $anubis2_colorTheme "dark") }}
+{{ else }}
+  {{ errorf "Anubis2: The parameter 'params.anubis2.colorTheme' must be one of 'auto', 'light', or 'dark'. You set it to '%s'" $anubis2_colorTheme }}
 {{ end }}
 
+
+{{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
-    {{ $colorThemeSwitcher = site.Params.colorthemeswitcher }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
+    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if isset site.Params.anubis2 "enablecolorthemeswitcher" }}
+    {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 
-{{ if or (eq $colorThemeSwitcher true) (eq $colorTheme "auto") }}
-    {{ if $colorThemeSwitcher }}
+
+{{ if or (eq $anubis2_enableColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
+    {{ if $anubis2_enableColorThemeSwitcher }}
         <div class="theme-switcher">
             {{ partial "font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
         </div>
@@ -18,7 +30,7 @@
 
     <script>
         const STORAGE_KEY = 'user-color-scheme'
-        const defaultTheme = "{{ $colorTheme }}"
+        const defaultTheme = "{{ $anubis2_colorTheme }}"
 
         let currentTheme
         let switchButton

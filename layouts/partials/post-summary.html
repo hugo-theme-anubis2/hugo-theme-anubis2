@@ -28,8 +28,16 @@
             {{ .Summary | safeHTML }}
         </div>
     {{ end }}
+    
+    {{ $anubis2_enableReadMoreButton := false }}
+    {{ if isset site.Params "readmore" }}
+        {{ $anubis2_enableReadMoreButton = site.Params.readMore }}
+        {{ warnf "Anubis2: The parameter `params.readMore` is deprecated. Use `params.anubis2.enableReadMoreButton` instead." }}
+    {{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablereadmorebutton") }}
+        {{ $anubis2_enableReadMoreButton = site.Params.Anubis2.enableReadMoreButton }}
+    {{ end }}
 
-    {{ if and (.Truncated) (.Site.Params.readMore) }}
+    {{ if and (.Truncated) ($anubis2_enableReadMoreButton) }}
         <div class="read-more">
             <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
         </div>
