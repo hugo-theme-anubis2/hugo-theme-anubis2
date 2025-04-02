@@ -26,16 +26,16 @@
         {{ if .Params.categories }}
             <ul class="post-categories">
                 {{ range $cat_name := .Params.categories }}
-                    {{ $cat := ($.Site.GetPage (printf "/categories/%s" $cat_name | urlize )) }}
-                    <li><a href="{{ $cat.RelPermalink }}">{{ $cat.Title | default $cat_name }}</a></li>
+                    {{ $cat_url := (printf "/categories/%s" $cat_name | urlize ) }}
+                    <li><a href="{{ $cat_url }}">{{ $cat_name }}</a></li>
                 {{ end }}
             </ul>
         {{ end }}
         {{ if .Params.tags }}
             <ul class="post-tags">
                 {{ range $tag_name := .Params.tags }}
-                    {{ $tag := ($.Site.GetPage (printf "/tags/%s" $tag_name | urlize )) }}
-                    <li><a href="{{ $tag.RelPermalink }}">#{{ $tag.Title | default $tag_name }}</a></li>
+                    {{ $tag_url := (printf "/tags/%s" ($tag_name | urlize)) }}
+                    <li><a href="{{ $tag_url }}">#{{ $tag_name }}</a></li>
                 {{ end }}
             </ul>
         {{ end }}
