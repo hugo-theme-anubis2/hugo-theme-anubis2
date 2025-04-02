@@ -25,7 +25,7 @@
 {{ $anubis2_colorTheme := "light" }}
 {{ if isset site.Params "colortheme"}}
   {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
-  {{ warnf "Anubis2: The parameter 'params.colortheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
+  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
 {{ else if isset site.Params.Anubis2 "colortheme" }}
   {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
 {{ end }}
@@ -95,8 +95,15 @@
   </style>
 {{ end }}
 
+{{ $anubis2_showCopyCodeButton := true }}
+{{ if isset site.Params "copycodebutton"}}
+  {{ $anubis2_showCopyCodeButton = site.Params.copyCodeButton }}
+  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated. Use 'params.anubis2.showCopyCodeButton' instead." }}
+{{ else if isset site.Params.Anubis2 "showcopycodebutton" }}
+  {{ $anubis2_showCopyCodeButton = site.Params.anubis2.showCopyCodeButton }}
+{{ end }}
 
-{{ if .Site.Params.copyCodeButton | default true }}
+{{ if $anubis2_showCopyCodeButton }}
     {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/copy-code.js") }}
 {{ end }}
 
