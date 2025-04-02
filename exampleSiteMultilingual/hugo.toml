@@ -44,8 +44,8 @@ hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
 colorTheme = "auto"
 enableColorThemeSwitcher = true
 
-police = "京公网安备 12345678号" # for China ICP police beian
-icp = "京ICP备xxxxx号-1" # for China ICP license
+# police = "京公网安备 12345678号" # for China ICP police beian
+# icp = "京ICP备xxxxx号-1" # for China ICP license
 
 social = [
     { id = "docs", url = "https://gohugo.io/documentation/" },
