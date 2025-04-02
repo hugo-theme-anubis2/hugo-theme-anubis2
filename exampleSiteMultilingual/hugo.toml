@@ -37,11 +37,13 @@ GiscusDataMapping = "pathname"
 customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
 
 [params.anubis2]
-enableMathGlobally = true # (default is false)
+enableMathGlobally = true # MathJax (default is false)
 enableCopyCodeButton = true
 enableReadMoreButton = true
 colorTheme = "auto"
 enableColorThemeSwitcher = true
+police = "京公网安备 12345678号" # for China ICP police beian
+icp = "京ICP备xxxxx号-1" # for China ICP license
 social = [
     { id = "docs", url = "https://gohugo.io/documentation/" },
     { id = "github", url = "https://github.com/Junyi-99/hugo-theme-anubis2" },
@@ -55,9 +57,6 @@ social = [
     { id = "youtube", url = "#" },
     { id = "bluesky", url = "#" }
 ]
-
-police = "京公网安备 12345678号" # for China ICP police beian
-icp = "京ICP备xxxxx号-1" # for China ICP license
 
 [[menu.main]]
 identifier = "home"
