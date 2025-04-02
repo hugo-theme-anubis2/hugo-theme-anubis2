@@ -2,13 +2,13 @@
 
 {{ $anubis2_social := slice }} <!--empty list-->
 
-{{ if $.Site.Params.Anubis2.Social }}
-    {{ $anubis2_social = $.Site.Params.Anubis2.Social }}
-{{ else }}
-    {{ $anubis2_social = $.Site.Params.Social }}
+{{ if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "social") }}
+    {{ $anubis2_social = site.Params.Anubis2.social }}
+{{ else if isset site.Params "social" }}
+    {{ $anubis2_social = site.Params.Social }}
 {{ end }}
 
-{{ if $.Site.Params.Social }}
+{{ if site.Params.Social }}
     {{ warnf "Anubis2: The parameter `params.social` is deprecated. Use `params.anubis2.social` instead." }}
 {{ end }}
 

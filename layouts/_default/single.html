@@ -55,7 +55,7 @@
     {{ if .Store.Get "hasMermaid" }}
         {{ partial "mermaid_support.html" . }}
     {{ end }}
-
+    
     {{ if .Params.math }}
         {{ partial "mathjax_support.html" . }}
     {{ end }}

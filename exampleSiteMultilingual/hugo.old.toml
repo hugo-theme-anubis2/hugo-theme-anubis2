@@ -21,8 +21,11 @@ paginationSinglePost = true
 # icp = "京ICP备xxxxx号-1" # for China ICP license
 # police = "京公网安备 12345678号" # for China police beian
 
-readNextPosts = 2
+colorTheme = "auto"
+colorThemeSwitcher = true
 
+readNextPosts = 2
+copyCodeButton = true
 rssAsSocialIcon = true
 locale = "en-us"
 math = false # true: enable mathjax globally (default is false)
@@ -40,11 +43,6 @@ GiscusDataMapping = "pathname"
 
 customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
 
-[params.anubis2]
-enableCopyCodeButton = true
-enableReadMoreButton = true
-colorTheme = "auto"
-enableColorThemeSwitcher = true
 social = [
     { id = "docs", url = "https://gohugo.io/documentation/" },
     { id = "github", url = "https://github.com/Junyi-99/hugo-theme-anubis2" },
@@ -58,6 +56,22 @@ social = [
     { id = "youtube", url = "#" },
     { id = "bluesky", url = "#" }
 ]
+
+# [params.anubis2]
+# showReadMoreButton = false
+# social = [
+#     { id = "docs", url = "https://gohugo.io/documentation/" },
+#     { id = "github", url = "https://github.com/Junyi-99/hugo-theme-anubis2" },
+#     { id = "linkedin", url = "https://www.linkedin.com/" },
+#     { id = "email", url = "example@example.com" },
+#     { id = "facebook", url = "#" },
+#     { id = "instagram", url = "#" },
+#     { id = "netease-music", url = "#" },
+#     { id = "telegram", url = "#" },
+#     { id = "x", url = "#" },
+#     { id = "youtube", url = "#" },
+#     { id = "bluesky", url = "#" }
+# ]
 [[menu.main]]
 identifier = "home"
 name = "Home"
