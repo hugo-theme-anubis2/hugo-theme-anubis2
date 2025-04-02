@@ -11,9 +11,6 @@
   {{ errorf "Anubis2: The parameter 'params.anubis2.colorTheme' must be one of 'auto', 'light', or 'dark'. You set it to '%s'" $anubis2_colorTheme }}
 {{ end }}
 
-{{ warnf "site.Params.anubis2.colorTheme: %v" site.Params.anubis2.colorTheme }}
-{{ warnf "anubis2_colorTheme:             %v" $anubis2_colorTheme }}
-
 
 {{ $anubis2_showColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
@@ -22,8 +19,6 @@
 {{ else if isset site.Params.anubis2 "showcolorthemeswitcher" }}
     {{ $anubis2_showColorThemeSwitcher = site.Params.anubis2.showColorThemeSwitcher }}
 {{ end }}
-
-
 
 
 {{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
