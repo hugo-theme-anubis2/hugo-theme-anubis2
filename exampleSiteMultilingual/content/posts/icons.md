@@ -10,7 +10,47 @@ tags = [
 ]
 +++
 
-To use an icon, simply copy its shortcode and paste it into your content where you want the icon to appear. The shortcode must be enclosed in `{{</*   */>}}`.
+To use an icon, simply copy its shortcode and paste it into your content where you want the icon to appear. The shortcode must be enclosed in `{{</* icon   */>}}`.
+
+<div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+{{< icon "4chan" >}}
+{{< icon "leetcode" >}}
+{{< icon "qq" >}}
+{{< icon "spotify" >}}
+{{< icon "tinder" >}}
+{{< icon "youtube" >}}
+{{< icon "docs" >}}
+{{< icon "linkedin" >}}
+{{< icon "reddit" >}}
+{{< icon "steam" >}}
+{{< icon "tumblr" >}}
+{{< icon "zhihu" >}}
+{{< icon "email" >}}
+{{< icon "mastodon" >}}
+{{< icon "rss" >}}
+{{< icon "teams" >}}
+{{< icon "twitch" >}}
+{{< icon "facebook" >}}
+{{< icon "medium" >}}
+{{< icon "skype" >}}
+{{< icon "telegram" >}}
+{{< icon "twitter" >}}
+{{< icon "github" >}}
+{{< icon "netease-music" >}}
+{{< icon "slack" >}}
+{{< icon "theme-dark" >}}
+{{< icon "vk" >}}
+{{< icon "gitlab" >}}
+{{< icon "notion" >}}
+{{< icon "snapchat" >}}
+{{< icon "theme-light" >}}
+{{< icon "weibo" >}}
+{{< icon "instagram" >}}
+{{< icon "patreon" >}}
+{{< icon "soundcloud" >}}
+{{< icon "tiktok" >}}
+{{< icon "x" >}}
+</div>
 
 <!--more-->
 

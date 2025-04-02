@@ -20,6 +20,15 @@ favorite = true
 
 This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 
+{{< note "This is a note to highlight important information." >}}
+
+{{< tip "This is a tip to help users."  >}}
+
+{{< caution "This is a warning to alert users." >}}
+
+{{< important "This is a danger to warn users." >}}
+
+{{< warning "This is a success message." >}}
 
 <!--more-->
 
