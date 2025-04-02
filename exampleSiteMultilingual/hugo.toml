@@ -22,7 +22,6 @@ readNextPosts = 2
 
 rssAsSocialIcon = true
 locale = "en-us"
-math = false # true: enable mathjax globally (default is false)
 toc = true
 
 # Graphcomment support
@@ -38,6 +37,7 @@ GiscusDataMapping = "pathname"
 customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
 
 [params.anubis2]
+enableMathGlobally = true # (default is false)
 enableCopyCodeButton = true
 enableReadMoreButton = true
 colorTheme = "auto"
