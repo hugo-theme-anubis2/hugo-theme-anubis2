@@ -1,0 +1,21 @@
+
+<style>
+    .hint-warning {
+        border-left: 0.25em solid hsl(40.13deg 100% 30.2%);
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-size: 14px;
+    }
+    .hint-warning::before {
+        content: "Warning ";
+        margin-bottom: 0.5rem;
+        display: block;
+        font-weight: 600;
+        color: hsl(40.13deg 100% 30.2%);
+    }
+</style>
+
+<div class="hint-warning">
+    {{ .Get 0 }}
+</div>

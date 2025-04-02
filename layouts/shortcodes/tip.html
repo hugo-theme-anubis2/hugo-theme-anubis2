@@ -1,0 +1,22 @@
+
+<style>
+    .hint-tip {
+        border-left: 0.25em solid hsl(137.23deg 66.01% 30%);
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-size: 14px;
+    }
+    .hint-tip::before {
+        content: "Tip ";
+        margin-bottom: 0.5rem;
+        display: block;
+        font-weight: 600;
+        color: hsl(137.23deg 66.01% 30%);
+    }
+
+</style>
+
+<div class="hint-tip">
+    {{ .Get 0 }}
+</div>

@@ -1,0 +1,22 @@
+
+<style>
+    .hint-important {
+        border-left: 0.25em solid hsl(260.98deg 69.08% 59.41%);
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-size: 14px;
+    }
+    .hint-important::before {
+        content: "Important ";
+        margin-bottom: 0.5rem;
+        display: block;
+        font-weight: 600;
+        color: hsl(260.98deg 69.08% 59.41%);
+    }
+
+</style>
+
+<div class="hint-important">
+    {{ .Get 0 }}
+</div>

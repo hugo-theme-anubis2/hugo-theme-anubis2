@@ -1,0 +1,21 @@
+
+<style>
+    .hint-caution {
+        border-left: 0.25em solid hsl(355.84deg 71.78% 47.25%);
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-size: 14px;
+    }
+    .hint-caution::before {
+        content: "Caution ";
+        margin-bottom: 0.5rem;
+        display: block;
+        font-weight: 600;
+        color: hsl(355.84deg 71.78% 47.25%);
+    }
+</style>
+
+<div class="hint-caution">
+    {{ .Get 0 }}
+</div>
