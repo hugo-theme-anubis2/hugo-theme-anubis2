@@ -18,9 +18,6 @@ description = "Anubis2 is another simple minimalist theme for Hugo blog engine."
 dateFormat = "2006-01-02"
 paginationSinglePost = true
 
-# icp = "京ICP备xxxxx号-1" # for China ICP license
-# police = "京公网安备 12345678号" # for China police beian
-
 readNextPosts = 2
 
 rssAsSocialIcon = true
@@ -58,6 +55,10 @@ social = [
     { id = "youtube", url = "#" },
     { id = "bluesky", url = "#" }
 ]
+
+police = "京公网安备 12345678号" # for China ICP police beian
+icp = "京ICP备xxxxx号-1" # for China ICP license
+
 [[menu.main]]
 identifier = "home"
 name = "Home"
