@@ -1,6 +1,21 @@
-{{ $colorTheme := "light" }}
-{{ $anubis2_showColorThemeSwitcher := true }}
+{{ $anubis2_colorTheme := "light" }}
+{{ if isset site.Params "colortheme"}}
+  {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
+  {{ warnf "Anubis2: The parameter 'params.colortheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
+{{ else if isset site.Params.Anubis2 "colortheme" }}
+  {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
+{{ end }}
+<!-- check if colorTheme is "auto", "light", "dark" -->
+{{ if or (eq $anubis2_colorTheme "auto") (eq $anubis2_colorTheme "light") (eq $anubis2_colorTheme "dark") }}
+{{ else }}
+  {{ errorf "Anubis2: The parameter 'params.anubis2.colorTheme' must be one of 'auto', 'light', or 'dark'. You set it to '%s'" $anubis2_colorTheme }}
+{{ end }}
 
+{{ warnf "site.Params.anubis2.colorTheme: %v" site.Params.anubis2.colorTheme }}
+{{ warnf "anubis2_colorTheme:             %v" $anubis2_colorTheme }}
+
+
+{{ $anubis2_showColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
     {{ $anubis2_showColorThemeSwitcher = site.Params.colorThemeSwitcher }}
     {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.showColorThemeSwitcher' instead." }}
@@ -9,12 +24,9 @@
 {{ end }}
 
 
-{{ if and (isset site.Params "colortheme") (ne site.Params.colortheme "") }}
-    {{ $colorTheme = site.Params.colortheme | lower }}
-{{ end }}
 
 
-{{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $colorTheme "auto") }}
+{{ if or (eq $anubis2_showColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
     {{ if $anubis2_showColorThemeSwitcher }}
         <div class="theme-switcher">
             {{ partial "font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
@@ -23,7 +35,7 @@
 
     <script>
         const STORAGE_KEY = 'user-color-scheme'
-        const defaultTheme = "{{ $colorTheme }}"
+        const defaultTheme = "{{ $anubis2_colorTheme }}"
 
         let currentTheme
         let switchButton
