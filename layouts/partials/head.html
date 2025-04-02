@@ -69,16 +69,22 @@
 
 {{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
 {{ range site.Params.customCSS }}
-    {{ $r := "" }}
-    {{ with resources.Get .  }}
-      {{ $r = . }}
+    <!-- Support remote custom css -->
+    {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
+      <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous">
     {{ else }}
-      {{ errorf "error: You defined customCSS, but %s was not found in the local file system, please check your config." . }}
-    {{ end }}
+      <!-- Load local custom css -->
+      {{ $r := "" }}
+      {{ with resources.Get .  }}
+        {{ $r = . }}
+      {{ else }}
+        {{ errorf "Anubis2: You defined customCSS, but './assets/%s' was not found, please check your config." . }}
+      {{ end }}
 
-    {{ if $r}}
-      {{ with $r | toCSS $opts | minify | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{ if $r }}
+        {{ with $r | toCSS $opts | minify | fingerprint }}
+          <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
       {{ end }}
     {{ end }}
 {{ end }}
