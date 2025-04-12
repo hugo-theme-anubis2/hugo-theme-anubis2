@@ -15,7 +15,7 @@ Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo
 > 
 > **Hugo frequently changes its configuration file structure**, which may lead to compatibility issues if your configuration is outdated.
 >
-> Check the [Anubis2 template](./exampleSiteMultilingual/) for the latest config file.  
+> Check the [Anubis2 Full Config](./exampleSiteMultilingual/hugo.toml) for the latest full config file.  
 
 
 
