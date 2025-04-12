@@ -13,6 +13,7 @@
                         height: 1.2em;
                         background-size: auto 100%;
                         vertical-align: text-bottom;
+                        margin-right: 2px;
                     }
                 </style>
             {{ end }}
@@ -29,15 +30,15 @@
         </div>
     {{ end }}
     
-    {{ $anubis2_enableReadMoreButton := false }}
-    {{ if isset site.Params "readmore" }}
-        {{ $anubis2_enableReadMoreButton = site.Params.readMore }}
-        {{ warnf "Anubis2: The parameter `params.readMore` is deprecated. Use `params.anubis2.enableReadMoreButton` instead." }}
-    {{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablereadmorebutton") }}
-        {{ $anubis2_enableReadMoreButton = site.Params.Anubis2.enableReadMoreButton }}
+    {{ $anubis2_showReadMoreButton := false }}
+    {{ if .Site.Params.readMore }}
+        {{ $anubis2_showReadMoreButton = .Site.Params.readMore }}
+        {{ warnf "Anubis2: The `readMore` parameter is deprecated. Use `anubis2.showReadMoreButton` instead." }}
+    {{ else if .Site.Params.Anubis2.showReadMoreButton }}
+        {{ $anubis2_showReadMoreButton = .Site.Params.Anubis2.showReadMoreButton }}
     {{ end }}
 
-    {{ if and (.Truncated) ($anubis2_enableReadMoreButton) }}
+    {{ if and (.Truncated) ($anubis2_showReadMoreButton) }}
         <div class="read-more">
             <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
         </div>
