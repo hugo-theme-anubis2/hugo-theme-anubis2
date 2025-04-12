@@ -1,0 +1,38 @@
+{{ if not (isset .Site.Params.Anubis2.Services.Utterances "repo") }}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.repo' is not set." }}
+{{ end }}
+
+{{ if not (isset .Site.Params.Anubis2.Services.Utterances "theme") }}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.theme' is not set." }}
+{{ end }}
+
+{{ if not (isset .Site.Params.Anubis2.Services.Utterances "issueterm") }}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.issueTerm' is not set." }}
+{{ end }}
+
+{{ $repo  := site.Params.Anubis2.Services.Utterances.repo  }}
+{{ $theme := site.Params.Anubis2.Services.Utterances.theme  }}
+{{ $label := site.Params.Anubis2.Services.Utterances.label | default "" }}
+{{ $issue := site.Params.Anubis2.Services.Utterances.issueTerm }}
+
+<!-- Check if issueterm in in the following string: pathname, url, title, og:title -->
+{{ $validIssueTerms := slice "pathname" "url" "title" "og:title" }}
+{{ if not (in $validIssueTerms $issue) }}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.issueTerm' is not set to a valid value." }}
+    {{ errorf "Valid values are: %s" (delimit $validIssueTerms ", ") }}
+{{ end }}
+
+{{ $validThemes := slice "github-light" "github-dark" "preferred-color-scheme" "github-dark-orange" "icy-dark" "dark-blue" "photon-dark" "boxy-light" "gruvbox-dark"}}
+{{ if not (in $validThemes $theme) }}
+        {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.theme' is not set to a valid value." }}
+        {{ errorf "Valid values are: %s" (delimit $validThemes ", ") }}
+{{ end }}
+
+<script src="https://utteranc.es/client.js"
+        repo="{{ $repo }}"
+        theme="{{ $theme }}"
+        label="{{ $label }}"
+        issue-term="{{ $issue }}"
+        crossorigin="anonymous"
+        async>
+</script>

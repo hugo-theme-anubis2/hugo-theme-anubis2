@@ -1,8 +1,8 @@
 <div class="header-top">
     <div class="header-top-left">
-        {{ partial "site-title.html" . }}
-        {{ partial "theme-switcher.html" . }}
-        {{ partial "social-icons.html" . }}
+        {{ partial "head/site-title.html" . }}
+        {{ partial "head/theme-switcher.html" . }}
+        {{ partial "head/social-icons.html" . }}
     </div>
     <div class="header-top-right">
 
@@ -31,7 +31,7 @@
 
 <!-- If math is enabled globally, we need to load mathjax -->
 {{ if or $anubis2_enableMathGlobally .Params.math }}
-    {{ partial "mathjax_support.html" . }}
+    {{ partial "features/mathjax_support.html" . }}
 {{ end }}
 
-{{ partial "header-extra.html" . }}
+{{ partial "head/header-extra.html" . }}

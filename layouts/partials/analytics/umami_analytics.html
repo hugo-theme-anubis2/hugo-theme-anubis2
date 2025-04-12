@@ -1,0 +1,14 @@
+{{ if not (isset .Site.Params.Anubis2.Services.Umami "id")}}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.umami, but the parameter 'params.anubis2.services.umami.id' is not set." }}
+{{ end }}
+
+{{ if not (isset .Site.Params.Anubis2.Services.Umami "url")}}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.umami, but the parameter 'params.anubis2.services.umami.url' is not set." }}
+{{ end }}
+
+{{ $umamiId := site.Params.Anubis2.Services.Umami.id }}
+{{ $umamiUrl:= site.Params.Anubis2.Services.Umami.url }}
+{{ $datacache:= site.Params.Anubis2.Services.Umami.datacache | default "false" }}
+{{ $dnt := site.Params.Anubis2.Services.Umami.dnt | default "false" }}
+
+<script async defer data-website-id="{{ $umamiId }}" data-cache="{{ $datacache }}" data-do-not-track="{{ $dnt }}" src="{{ $umamiUrl }}"></script>

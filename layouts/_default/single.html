@@ -44,7 +44,7 @@
     {{ end }}
 
     {{ if not .Params.disableComments }}
-        {{ partial "comments.html" . }}
+        {{ partial "feat-comments/comments.html" . }}
     {{ end }}
 
     {{/*  When you use ```mermaid``, render-codeblock-mermaid.html is called and
@@ -53,10 +53,10 @@
     */}}
 
     {{ if .Store.Get "hasMermaid" }}
-        {{ partial "mermaid_support.html" . }}
+        {{ partial "features/mermaid_support.html" . }}
     {{ end }}
     
     {{ if .Params.math }}
-        {{ partial "mathjax_support.html" . }}
+        {{ partial "features/mathjax_support.html" . }}
     {{ end }}
 {{ end }}

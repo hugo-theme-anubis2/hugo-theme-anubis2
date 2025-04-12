@@ -44,11 +44,11 @@
     {{ end }}
     
     {{ if .Store.Get "hasMermaid" }}
-        {{ partial "mermaid_support.html" . }}
+        {{ partial "features/mermaid_support.html" . }}
     {{ end }}
     
     {{ if .Params.math }}
-        {{ partial "mathjax_support.html" . }}
+        {{ partial "features/mathjax_support.html" . }}
     {{ end }}
 
     {{ partial "post-info.html" . }}

@@ -16,8 +16,8 @@
 
         <div style="display: flex; align-items: center; gap:8px">
             © {{ if site.Params.Author.name }} {{ site.Params.Author.name }}, {{end}} {{ now.Year }}
-            {{ if site.Params.UmamiAnalytics.shareUrl }}
-            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="{{ site.Params.UmamiAnalytics.shareUrl }}"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
+            {{ if site.Params.Anubis2.Services.Umami.ShareUrl }}
+            <a aria-label="Check statistics data" style="display: flex; align-items: center; border-bottom: none; cursor: pointer; color: var(--pagination-link-color)" href="{{ site.Params.Anubis2.Services.Umami.ShareUrl }}"><svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg></a>
             {{ end }}
         </div>
         <div style="display:flex; align-items: center; gap:4px">

@@ -1,0 +1,15 @@
+<!-- Google tag (gtag.js) -->
+
+{{ if not (isset site.Params.Anubis2.Services.GoogleAnalytics "gtag")}}
+    {{ errorf "Anubis2: You enabled params.anubis2.services.googleAnalytics, but the parameter 'params.anubis2.services.googleAnalytics.gtag' is not set." }}
+{{ end }}
+
+{{ $gtag := site.Params.Anubis2.Services.GoogleAnalytics.gtag }}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ $gtag }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ $gtag }}');
+</script>

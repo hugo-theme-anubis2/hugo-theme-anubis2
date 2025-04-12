@@ -3,7 +3,6 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "Anubis2 Demo Site"
 theme = "anubis2"
-disqusShortname = ""
 
 [pagination]
 pagerSize = 5
@@ -24,52 +23,71 @@ rssAsSocialIcon = true
 locale = "en-us"
 toc = true
 
-# Graphcomment support
-graphcommentId = ""
-
-GiscusRepo = "hugo-theme-anubis2/hugo-theme-anubis2"
-GiscusRepoId = "R_kgDOLEp76Q"
-GiscusDiscussionCategory = "General"
-GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
-GiscusLazyLoad = false
-GiscusDataMapping = "pathname"
-
-
-
 [params.anubis2]
-enableMathGlobally = true # MathJax (default is false)
-enableCopyCodeButton = true
-enableReadMoreButton = true
-hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
-colorTheme = "auto"
-enableColorThemeSwitcher = true
+    enableMathGlobally = true # MathJax (default is false)
+    enableCopyCodeButton = true
+    enableReadMoreButton = true
+    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
+    colorTheme = "auto"
+    enableColorThemeSwitcher = true
 
-police = "京公网安备 12345678号" # for China ICP police beian
-icp = "京ICP备xxxxx号-1" # for China ICP license
+    police = "京公网安备 12345678号" # for China ICP police beian
+    icp = "京ICP备xxxxx号-1" # for China ICP license
 
-social = [
-    { id = "docs", url = "https://gohugo.io/documentation/" },
-    { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
-    { id = "linkedin", url = "https://www.linkedin.com/" },
-    { id = "email", url = "example@example.com" },
-    { id = "facebook", url = "#" },
-    { id = "instagram", url = "#" },
-    { id = "netease-music", url = "#" },
-    { id = "telegram", url = "#" },
-    { id = "x", url = "#" },
-    { id = "youtube", url = "#" },
-    { id = "bluesky", url = "#" }
-]
+    social = [
+        { id = "docs", url = "https://gohugo.io/documentation/" },
+        { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
+        { id = "linkedin", url = "https://www.linkedin.com/" },
+        { id = "email", url = "example@example.com" },
+        { id = "facebook", url = "#" },
+        { id = "instagram", url = "#" },
+        { id = "netease-music", url = "#" },
+        { id = "telegram", url = "#" },
+        { id = "x", url = "#" },
+        { id = "youtube", url = "#" },
+        { id = "bluesky", url = "#" }
+    ]
 
-customCSS = [
-    "custom-css/custom1.scss", 
-    "custom-css/custom2.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-]
+    customCSS = [
+        "custom-css/custom1.scss", 
+        "custom-css/custom2.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    ]
 
-customJS = [
-    "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
-]
+    customJS = [
+        "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+    ]
+
+    [params.anubis2.services]
+        [params.anubis2.services.giscus]
+            # Giscus Comment System https://giscus.app/
+            repo        = "hugo-theme-anubis2/hugo-theme-anubis2"
+            repoId      = "R_kgDOLEp76Q"
+            category    = "General"
+            categoryId  = "DIC_kwDOLEp76c4CcbPS"
+            dataMapping = "pathname"
+            lazyLoad    = false
+
+        # [params.anubis2.services.disqus]
+        #   shortName = "junyide-xiao-wu"
+
+        # [params.anubis2.services.utterances]
+        #   repo = "hugo-theme-anubis2/hugo-theme-anubis2"
+        #   theme = "github-light"
+        #   issueTerm = "pathname"
+
+        [params.anubis2.services.umami]
+            # Umami Analytics https://umami.is/
+            id = "e4f661ff-9a8c-49d4-b3cc-2efe553e3973"                                            # Website ID
+            url = "https://umami.xtra.science/script.js"
+            datacache = false
+            dnt       = false
+            # if shareUrl is set, a button will be shown on the end of each page
+            shareUrl = "https://cloud.umami.is/share/CUTKp6yiDQllAqq9/hugo-theme-anubis2.netlify.app"
+
+        [params.anubis2.services.googleAnalytics]
+            # Google Analytics https://analytics.google.com/
+            gtag    = "G-32F16X8HLF"
 
 [[menu.main]]
 identifier = "home"
@@ -176,15 +194,3 @@ codeFences         = true # tested with true and false. Both work.
 noClasses          = true # If you run with markup.highlight.noClasses=false in your site configuration, you need a style sheet.
 style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
 tabWidth           = 4
-
-[params.UmamiAnalytics]
-enabled = true
-dnt = false
-id = "d01ce82c-c8f4-4714-ba37-ba4899f2a885"                                            # Website ID
-datacache = false
-url = "https://umami.xtra.science/script.js"
-shareUrl = "https://umami.xtra.science/share/Fy0goUn0b9rrxxGe/hugo-theme-anubis2.netlify.app"
-
-[params.GoogleAnalytics]
-enabled = true
-gtag = "G-32F16X8HLF"
