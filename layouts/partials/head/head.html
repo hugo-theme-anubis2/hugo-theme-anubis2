@@ -20,7 +20,7 @@
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 {{ end -}}
 
-{{ partial "favicons.html" . }}
+{{ partial "head/favicons.html" . }}
 
 
 {{ $anubis2_colorTheme := "light" }}
@@ -67,8 +67,8 @@
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/light.css") }}
 {{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/dark.css") }}
 
-{{ partial "custom-css.html" . }}
-{{ partial "custom-js.html" . }}
+{{ partial "features/custom-css.html" . }}
+{{ partial "features/custom-js.html" . }}
 
 {{ if site.Params.isso.enabled }} {{/* TODO: maybe we can remove it */}}
   <style>
@@ -116,12 +116,15 @@
 <meta property="article:tag" content="">
 <meta property="article:publisher" content="https://www.facebook.com/XXX"> -->
 
-{{ if (.Site.Params.GoogleAnalytics.enabled) }} 
-    {{ partial "google_analytics.html" . }}
+
+
+
+{{ if isset site.Params.Anubis2.Services "googleanalytics" }} 
+    {{ partial "analytics/google_analytics.html" . }}
 {{ end }}
 
-{{ if (.Site.Params.UmamiAnalytics.enabled ) }}
-    {{ partial "umami_analytics.html" . }}
+{{ if isset site.Params.Anubis2.Services "umami" }} 
+    {{ partial "analytics/umami_analytics.html" . }}
 {{ end }}
 
-{{ partial "head-extra.html" . }}
+{{ partial "head/head-extra.html" . }}

@@ -6,7 +6,7 @@ aliases = ["about-us", "about-hugo"]
 author = ["Hugo Authors", "Junyi"]
 +++
 
-[Anubis2](https://github.com/Junyi-99/hugo-theme-anubis2) 是另一个适用于 Hugo 博客引擎的简约主题。
+[Anubis2](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2) 是另一个适用于 Hugo 博客引擎的简约主题。
 
 Hugo 是用 Go 语言编写的，是一个开源的静态站点生成器，可在 Apache License 2.0 下获得。Hugo 支持 TOML、YAML 和 JSON 数据文件类型，Markdown 和 HTML 内容文件，并使用短代码添加丰富内容。其他显著特性包括分类法、多语言模式、图像处理、自定义输出格式、HTML/CSS/JS 压缩以及对 Sass SCSS 工作流的支持。
 

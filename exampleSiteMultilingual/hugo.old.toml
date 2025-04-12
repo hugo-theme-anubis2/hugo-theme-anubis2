@@ -34,7 +34,7 @@ toc = true
 # Graphcomment support
 graphcommentId = ""
 
-GiscusRepo = "Junyi-99/hugo-theme-anubis2"
+GiscusRepo = "hugo-theme-anubis2/hugo-theme-anubis2"
 GiscusRepoId = "R_kgDOLEp76Q"
 GiscusCategory = "General"
 GiscusCategoryId = "DIC_kwDOLEp76c4CcbPS"
@@ -45,7 +45,7 @@ customCSS = ["custom-css/custom1.scss", "custom-css/custom2.css"]
 
 social = [
     { id = "docs", url = "https://gohugo.io/documentation/" },
-    { id = "github", url = "https://github.com/Junyi-99/hugo-theme-anubis2" },
+    { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
     { id = "linkedin", url = "https://www.linkedin.com/" },
     { id = "email", url = "example@example.com" },
     { id = "facebook", url = "#" },
@@ -61,7 +61,7 @@ social = [
 # showReadMoreButton = false
 # social = [
 #     { id = "docs", url = "https://gohugo.io/documentation/" },
-#     { id = "github", url = "https://github.com/Junyi-99/hugo-theme-anubis2" },
+#     { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
 #     { id = "linkedin", url = "https://www.linkedin.com/" },
 #     { id = "email", url = "example@example.com" },
 #     { id = "facebook", url = "#" },

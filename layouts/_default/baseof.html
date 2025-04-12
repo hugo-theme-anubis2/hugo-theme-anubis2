@@ -16,7 +16,7 @@
 <html lang="{{ .Site.Params.locale | default .Site.LanguageCode }}" data-theme="{{ $dataTheme }}">
 <head>
     {{ block "head" . }}
-        {{ partial "head.html" . }}
+        {{ partial "head/head.html" . }}
     {{ end }}
 </head>
 <body>
@@ -24,7 +24,7 @@
     <div class="container">
         <header class="common-header">
             {{ block "header" . }}
-                {{ partial "header.html" . }}
+                {{ partial "head/header.html" . }}
             {{ end }}
         </header>
         <main id="main" tabindex="-1">

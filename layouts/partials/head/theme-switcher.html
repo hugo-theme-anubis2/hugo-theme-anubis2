@@ -24,7 +24,7 @@
 {{ if or (eq $anubis2_enableColorThemeSwitcher true) (eq $anubis2_colorTheme "auto") }}
     {{ if $anubis2_enableColorThemeSwitcher }}
         <div class="theme-switcher">
-            {{ partial "font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
+            {{ partial "features/font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
         </div>
     {{ end }}
 
