@@ -10,7 +10,23 @@
     <article class="post h-entry">
         <div class="post-header">
             <header>
-                <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{ trim .Title  " " | markdownify }}</h1>
+                {{ $random := (md5 .Title) }}
+                {{ $iconPath := printf "%sicon.svg" .File.Dir }}
+                {{ if fileExists $iconPath }}
+                    <style>
+                        .post-icon-{{ $random }}::before {
+                            display: inline-block;
+                            content: '';
+                            background: url("/{{ $iconPath }}");
+                            width: 1.2em;
+                            height: 1.2em;
+                            background-size: auto 100%;
+                            vertical-align: text-bottom;
+                            margin-right: 4px;
+                        }
+                    </style>
+                {{ end }}
+                <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}} {{ if fileExists $iconPath}}post-icon-{{$random}}{{end}}">{{ trim .Title  " " | markdownify }}</h1>
                 {{ partial "post-language-switcher.html" . }}
             </header>
             {{ partial "post-info.html" . }}
