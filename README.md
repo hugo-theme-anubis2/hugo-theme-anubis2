@@ -53,20 +53,46 @@ Don't be panic, configure Anubis2 is really **simple**.
 **This is the minimum configuration:**
 
 ```toml
-baseURL = "https://hugo-theme-anubis2.netlify.app/"
+baseURL = "/"
 languageCode = "en-us"
-theme = "anubis2"
 title = "Anubis2 Demo Site"
+theme = "anubis2"
+
+[pagination]
+pagerSize = 5
 
 [params.author]
 name = "Junyi"
 
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 3
+
+[[menu.main]]
+name = "Archive"
+identifier = "archive"
+url = "/posts/"
+weight = 4
+
 [markup.goldmark.renderer]
-unsafe = true # true | false; Enable unsafe mode to have a better experience
+unsafe = true # Enable unsafe mode to have a better experience
 
 [markup.highlight]
-style = 'base16-snazzy' # Chroma style, find more at here: https://swapoff.org/chroma/playground/
-
+style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
 ```
 
 You are encouraged keeping other fields as defaults and fine-tune them when you have time! (see [Full Configuration Examples](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/wiki/Configuration-Example))

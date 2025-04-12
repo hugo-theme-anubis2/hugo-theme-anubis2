@@ -33,11 +33,6 @@ identifier = "archive"
 url = "/posts/"
 weight = 4
 
-[params.anubis2]
-    social = [
-        { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
-    ]
-
 [markup.goldmark.renderer]
 unsafe = true # Enable unsafe mode to have a better experience
 
