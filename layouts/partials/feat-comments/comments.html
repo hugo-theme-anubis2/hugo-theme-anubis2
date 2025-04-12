@@ -1,15 +1,16 @@
-{{ if isset site.Params.Anubis2.Services "disqus" }}
-    {{ partial "feat-comments/disqus.html" . }}
+{{ if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "services")}}
+    {{ if isset site.Params.Anubis2.Services "disqus" }}
+        {{ partial "feat-comments/disqus.html" . }}
+    {{ end }}
+
+    {{ if isset site.Params.Anubis2.Services "giscus"}}
+        {{ partial "feat-comments/giscus.html" . }}
+    {{ end}}
+
+    {{ if isset site.Params.Anubis2.Services "utterances" }}
+        {{ partial "feat-comments/utterances.html" . }}
+    {{ end }}
 {{ end }}
-
-{{ if isset site.Params.Anubis2.Services "giscus"}}
-    {{ partial "feat-comments/giscus.html" . }}
-{{ end}}
-
-{{ if isset site.Params.Anubis2.Services "utterances" }}
-    {{ partial "feat-comments/utterances.html" . }}
-{{ end }}
-
 <!-- 
 {{ if site.Params.isso.enabled }}
     {{ partial "feat-comments/isso.html" . }}
