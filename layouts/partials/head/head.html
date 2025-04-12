@@ -117,14 +117,14 @@
 <meta property="article:publisher" content="https://www.facebook.com/XXX"> -->
 
 
+{{ if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "services")}}
+  {{ if isset site.Params.Anubis2.Services "googleanalytics" }} 
+      {{ partial "analytics/google_analytics.html" . }}
+  {{ end }}
 
-
-{{ if isset site.Params.Anubis2.Services "googleanalytics" }} 
-    {{ partial "analytics/google_analytics.html" . }}
-{{ end }}
-
-{{ if isset site.Params.Anubis2.Services "umami" }} 
-    {{ partial "analytics/umami_analytics.html" . }}
-{{ end }}
+  {{ if isset site.Params.Anubis2.Services "umami" }} 
+      {{ partial "analytics/umami_analytics.html" . }}
+  {{ end }}
+{{end}}
 
 {{ partial "head/head-extra.html" . }}
