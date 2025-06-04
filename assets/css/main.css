@@ -154,8 +154,8 @@ thead {
 
 table {
     max-width: 100%;
-    display: block;
-    overflow: scroll;
+    display: table;
+    overflow: hidden;
     border-spacing: 0;
     border-collapse: collapse;
     border-top-left-radius: 6px;
@@ -163,12 +163,17 @@ table {
     font-size: 14px;
 }
 
+.highlight table {
+    border-radius: 0px;
+}
+
 th,
 td {
     padding: 0.25em 0.5em;
-    border: 1px double var(--table-border-color);
-
+    border: 1px solid var(--table-border-color);
 }
+
+
 
 /* Code */
 mark {
@@ -186,7 +191,7 @@ kbd {
     line-height: 154%;
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    overflow: scroll;
+    overflow: visible;
 }
 
 /* <code> tag */
@@ -197,7 +202,12 @@ code {
 }
 
 pre {
-    padding: 0.3em;
+    padding: 0.6em;
+    margin-bottom: 1em;
+}
+
+pre:has(code.language-txt) {
+    padding: 0.3em 0.6em 0.3em 0.6em; /* top, right, bottom, left */
 }
 
 /* <kbd> inside <p> */
@@ -230,7 +240,7 @@ p kbd {
 
 td pre {
     border: none;
-    /* padding: 0px; */
+    padding: 0px;
     border-radius: 0px;
 }
 
@@ -256,15 +266,17 @@ div.highlight {
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
     margin-bottom: 14px;
+    overflow: hidden;
 }
 
 div.highlight div {
-    overflow: scroll;
+    overflow: auto;
+    padding: 0.3em 0em 0.3em 0em; /* top, right, bottom, left */
 }
 
 div.highlight pre {
     border: none;
-    display: grid;
+    display: block;
     margin: 0px;
     overflow: auto;
     /* Have to add this line, otherwise the "pre" and "code" will have different width */
@@ -871,7 +883,7 @@ ul.footer-menu>li {
 /* Copy code  */
 .highlight {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .highlight:hover .highlight-copy-btn {
