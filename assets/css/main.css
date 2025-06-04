@@ -155,7 +155,7 @@ thead {
 table {
     max-width: 100%;
     display: block;
-    overflow: scroll;
+    overflow: overlay;
     border-spacing: 0;
     border-collapse: collapse;
     border-top-left-radius: 6px;
@@ -186,7 +186,7 @@ kbd {
     line-height: 154%;
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    overflow: scroll;
+    overflow: overlay;
 }
 
 /* <code> tag */
@@ -198,7 +198,9 @@ code {
 
 pre {
     padding: 0.3em;
+    margin-bottom: 1em;
 }
+
 
 /* <kbd> inside <p> */
 /* <kbd> inside <pre> */
@@ -259,7 +261,7 @@ div.highlight {
 }
 
 div.highlight div {
-    overflow: scroll;
+    overflow: overlay;
 }
 
 div.highlight pre {
