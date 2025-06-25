@@ -4,8 +4,8 @@
 {{ $anubis2_customCSS := slice }}
 {{ if isset site.Params "customcss" }}
   {{ $anubis2_customCSS = site.Params.customCSS }}
-  {{ warnf "Anubis2: The parameter 'params.customCSS' is deprecated. Use 'params.anubis2.customCSS' instead." }}
-{{ else if isset site.Params.Anubis2 "customcss" }}
+  {{ warnf "Anubis2: The parameter 'params.customCSS' is deprecated in anubis2. Use 'params.anubis2.customCSS' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "customcss") }}
   {{ $anubis2_customCSS = site.Params.Anubis2.customCSS }}
 {{ end }}
 

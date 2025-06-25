@@ -1,12 +1,12 @@
-{{ if not (isset .Site.Params.Anubis2.Services.Utterances "repo") }}
+{{ if not (isset site.Params.Anubis2.Services.Utterances "repo") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.repo' is not set." }}
 {{ end }}
 
-{{ if not (isset .Site.Params.Anubis2.Services.Utterances "theme") }}
+{{ if not (isset site.Params.Anubis2.Services.Utterances "theme") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.theme' is not set." }}
 {{ end }}
 
-{{ if not (isset .Site.Params.Anubis2.Services.Utterances "issueterm") }}
+{{ if not (isset site.Params.Anubis2.Services.Utterances "issueterm") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.utterances, but the parameter 'params.anubis2.services.utterances.issueTerm' is not set." }}
 {{ end }}
 

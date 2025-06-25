@@ -2,7 +2,7 @@
     {{ $pageLang := .Page.Lang}}
     {{ $translations := .AllTranslations }}
     {{ if not .IsTranslated }}
-        {{ $translations = $.Site.Home.AllTranslations }}
+        {{ $translations = site.Home.AllTranslations }}
     {{ end }}
 
     {{ range $translations }}

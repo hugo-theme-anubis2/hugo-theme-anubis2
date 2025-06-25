@@ -1,8 +1,8 @@
 {{ $anubis2_colorTheme := "light" }}
 {{ if isset site.Params "colortheme"}}
   {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
-  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
-{{ else if isset site.Params.Anubis2 "colortheme" }}
+  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated in anubis2. Use 'params.anubis2.colorTheme' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "colortheme") }}
   {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
 {{ end }}
 <!-- check if colorTheme is "auto", "light", "dark" -->
@@ -15,8 +15,8 @@
 {{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
     {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
-{{ else if isset site.Params.anubis2 "enablecolorthemeswitcher" }}
+    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated in anubis2. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablecolorthemeswitcher") }}
     {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 

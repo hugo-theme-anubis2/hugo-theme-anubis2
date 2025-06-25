@@ -6,7 +6,7 @@
 <meta name="theme-name" content="Anubis2">
 
 {{ partial "title.html" . }}
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
 
 {{ with .Keywords }}
     <meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }},{{ end }}{{ $e }}{{ end }}">
@@ -17,7 +17,7 @@
 {{ end }}
 
 {{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink site.Title | safeHTML }}
 {{ end -}}
 
 {{ partial "head/favicons.html" . }}
@@ -26,8 +26,8 @@
 {{ $anubis2_colorTheme := "light" }}
 {{ if isset site.Params "colortheme"}}
   {{ $anubis2_colorTheme = site.Params.colortheme | lower }}
-  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated. Use 'params.anubis2.colorTheme' instead." }}
-{{ else if isset site.Params.Anubis2 "colortheme" }}
+  {{ warnf "Anubis2: The parameter 'params.colorTheme' is deprecated in anubis2. Use 'params.anubis2.colorTheme' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "colortheme") }}
   {{ $anubis2_colorTheme = site.Params.anubis2.colorTheme | lower }}
 {{ end }}
 <!-- check if colorTheme is "auto", "light", "dark" -->
@@ -40,8 +40,8 @@
 {{ $anubis2_enableColorThemeSwitcher := true }}
 {{ if isset site.Params "colorthemeswitcher" }}
   {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-  {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
-{{ else if isset site.Params.Anubis2 "enablecolorthemeswitcher" }}
+  {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated in anubis2. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablecolorthemeswitcher") }}
   {{ $anubis2_enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 
@@ -85,8 +85,8 @@
 {{ $anubis2_enableCopyCodeButton := true }}
 {{ if isset site.Params "copycodebutton"}}
   {{ $anubis2_enableCopyCodeButton = site.Params.copyCodeButton }}
-  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated. Use 'params.anubis2.enableCopyCodeButton' instead." }}
-{{ else if isset site.Params.Anubis2 "enablecopycodebutton" }}
+  {{ warnf "Anubis2: The parameter 'params.copyCodeButton' is deprecated in anubis2. Use 'params.anubis2.enableCopyCodeButton' instead." }}
+{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablecopycodebutton") }}
   {{ $anubis2_enableCopyCodeButton = site.Params.anubis2.enableCopyCodeButton }}
 {{ end }}
 
@@ -94,19 +94,19 @@
     {{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/copy-code.js") }}
 {{ end }}
 
-{{ range .Site.Params.customJS -}}
+{{ range site.Params.customJS -}}
   {{ partial "resource.html" (dict "context" $ "type" "js" "filename" . ) }}
 {{- end }}
 
-{{ if isset .Site.Params "webmentions" }}
-    {{ if isset .Site.Params.webmentions "login"  }}
-        <link rel="webmention" href="https://webmention.io/{{.Site.Params.webmentions.login}}/webmention" />
-        {{ if eq .Site.Params.webmentions.pingback true  }}
-            <link rel="pingback" href="https://webmention.io/{{.Site.Params.webmentions.login}}/xmlrpc" />
+{{ if isset site.Params "webmentions" }}
+    {{ if isset site.Params.webmentions "login"  }}
+        <link rel="webmention" href="https://webmention.io/{{site.Params.webmentions.login}}/webmention" />
+        {{ if eq site.Params.webmentions.pingback true  }}
+            <link rel="pingback" href="https://webmention.io/{{site.Params.webmentions.login}}/xmlrpc" />
         {{ end }}
     {{ end }}
-    {{ if isset .Site.Params.webmentions "url"  }}
-        <link rel="webmention" href="{{.Site.Params.webmentions.url}}" />
+    {{ if isset site.Params.webmentions "url"  }}
+        <link rel="webmention" href="{{site.Params.webmentions.url}}" />
     {{ end }}
 {{ end }}
 

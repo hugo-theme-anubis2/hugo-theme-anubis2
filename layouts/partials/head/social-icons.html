@@ -9,18 +9,18 @@
 {{ end }}
 
 {{ if site.Params.Social }}
-    {{ warnf "Anubis2: The parameter `params.social` is deprecated. Use `params.anubis2.social` instead." }}
+    {{ warnf "Anubis2: The parameter `params.social` is deprecated in anubis2. Use `params.anubis2.social` instead." }}
 {{ end }}
 
 {{ range $anubis2_social }}
-    {{ if and (isset $.Site.Data.social.social_icons .id) (isset . "url") }}
+    {{ if and (isset site.Data.social.social_icons .id) (isset . "url") }}
         <li>
             <a {{ printf "href=%q" .url | safeHTMLAttr }} title="{{ humanize .id }}" rel="me">
             {{ partial "features/font-awesome.html" (dict "iconName" .id "custom" false) }}
             </a>
         </li>
-    {{ else if and (isset $.Site.Data.social.social_icons .id) (isset . "name") }}
-        {{ $url := index $.Site.Data.social.social_icons .id }}
+    {{ else if and (isset site.Data.social.social_icons .id) (isset . "name") }}
+        {{ $url := index site.Data.social.social_icons .id }}
         {{ $ref := printf $url .name }}
         <li>
             <a {{ printf "href=%q" $ref | safeHTMLAttr }} title="{{ humanize .id }}" rel="me">
@@ -37,12 +37,12 @@
 {{ end }}
 
 {{ $rssIcon := true }}
-{{ if isset .Site.Params "rssIcon" }}
-    {{ $rssIcon = .Site.Params.rssIcon }}
+{{ if isset site.Params "rssIcon" }}
+    {{ $rssIcon = site.Params.rssIcon }}
 {{ end }}
 
 {{ if $rssIcon }}
-    {{ with .Site.Home.OutputFormats.Get "rss" -}}
+    {{ with site.Home.OutputFormats.Get "rss" -}}
         <li>
             <a {{ printf "href=%q" .RelPermalink | safeHTMLAttr }} title="RSS" rel="me">
             {{ partial "features/font-awesome.html" (dict "iconName" "rss" "custom" false) }}

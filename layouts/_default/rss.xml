@@ -1,38 +1,38 @@
 {{- $pctx := . -}}
-{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- if .IsHome -}}{{ $pctx = site }}{{- end -}}
 {{- $pages := where (where $pctx.RegularPages ".Params.disable_feed" "!=" true) "Params.hidden" "!=" true -}}
-{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}
 {{- end -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{ if eq  .Title  site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ site.Title }}{{ end }}</title>
     <link>{{ .RelPermalink }}</link>
-    <description>{{ .Site.Title }}{{ if ne  .Title  .Site.Title }}{{ with .Title }} ({{.}}){{ end }}{{ end }}</description>
-    <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
+    <description>{{ site.Title }}{{ if ne  .Title  site.Title }}{{ with .Title }} ({{.}}){{ end }}{{ end }}</description>
+    <generator>Hugo -- gohugo.io</generator>{{ with site.LanguageCode }}
     <language>{{.}}</language>{{end}}
-    {{ with .Site.Params.author }}
+    {{ with site.Params.author }}
       {{ with .email }}
         <managingEditor>{{.}}
-          {{ with $.Site.Params.author.name }}
+          {{ with site.Params.author.name }}
             ({{.}})
           {{end}}
         </managingEditor>
       {{end}}
 
-      {{ with .Site.Params.author.email }}
+      {{ with site.Params.author.email }}
         <webMaster>
           {{.}}
-          {{ with $.Site.Params.author.name }}
+          {{ with site.Params.author.name }}
             ({{.}})
           {{end}}
         </webMaster>
       {{end}}
     {{ end }}
 
-    {{ with .Site.Copyright }}
+    {{ with site.Copyright }}
     <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
     <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
     {{ with .OutputFormats.Get "RSS" }}
@@ -43,7 +43,7 @@
       <title>{{ .Title }}</title>
       <link>{{ .RelPermalink }}</link>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Params.author.email }}<author>{{.}}{{ with $.Site.Params.author.name }} ({{.}}){{end}}</author>{{end}}
+      {{ with site.Params.author.email }}<author>{{.}}{{ with site.Params.author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .RelPermalink }}</guid>
       <description>{{ .Content | html }}</description>
     </item>

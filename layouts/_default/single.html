@@ -44,7 +44,7 @@
     {{ end }}
 
     {{ if gt $readNextPosts 0 }}
-        {{ $related := .Site.RegularPages.Related . | first $readNextPosts }}
+        {{ $related := site.RegularPages.Related . | first $readNextPosts }}
         {{ with $related }}
             <h3 class="read-next-title noselect">{{ i18n "readNext" }}</h3>
             <ul class="read-next-posts noselect">
@@ -55,7 +55,7 @@
         {{ end }}
     {{ end }}
 
-    {{ if and (.Site.Params.paginationSinglePost) (ne .Type "page") }}
+    {{ if and (site.Params.paginationSinglePost) (ne .Type "page") }}
         {{ partial "post-pagination.html" . }}
     {{ end }}
 

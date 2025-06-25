@@ -24,18 +24,18 @@
         {{ partial "post-language-switcher.html" . }}
     </div>
 
-    {{ if not .Site.Params.disableSummary }}
+    {{ if not site.Params.disableSummary }}
         <div class="content post-summary p-summary">
             {{ .Summary | safeHTML }}
         </div>
     {{ end }}
     
     {{ $anubis2_showReadMoreButton := false }}
-    {{ if .Site.Params.readMore }}
-        {{ $anubis2_showReadMoreButton = .Site.Params.readMore }}
-        {{ warnf "Anubis2: The `readMore` parameter is deprecated. Use `anubis2.showReadMoreButton` instead." }}
-    {{ else if .Site.Params.Anubis2.showReadMoreButton }}
-        {{ $anubis2_showReadMoreButton = .Site.Params.Anubis2.showReadMoreButton }}
+    {{ if site.Params.readMore }}
+        {{ $anubis2_showReadMoreButton = site.Params.readMore }}
+        {{ warnf "Anubis2: The `readMore` parameter is deprecated in anubis2. Use `anubis2.showReadMoreButton` instead." }}
+    {{ else if site.Params.Anubis2.showReadMoreButton }}
+        {{ $anubis2_showReadMoreButton = site.Params.Anubis2.showReadMoreButton }}
     {{ end }}
 
     {{ if and (.Truncated) ($anubis2_showReadMoreButton) }}
