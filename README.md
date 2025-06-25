@@ -15,7 +15,7 @@ Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo
 > 
 > **Hugo frequently changes its configuration file structure**, which may lead to compatibility issues if your configuration is outdated.
 >
-> Check the [Anubis2 Full Config](./exampleSiteMultilingual/hugo.toml) for the latest full config file.  
+> Check the [Anubis2 Full Config](./example-site/hugo.toml) for the latest full config file.  
 
 
 
@@ -97,7 +97,7 @@ style              = 'catppuccin-frappe' # Find more style at here: https://swap
 
 You are encouraged keeping other fields as defaults and fine-tune them when you have time! (see [Full Configuration Examples](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/wiki/Configuration-Example))
 
-In the other way, you can check out the example site's [configuration file](exampleSiteMultilingual/hugo.toml)
+In the other way, you can check out the example site's [configuration file](example-site/hugo.toml)
 
 ## Run your site
 
