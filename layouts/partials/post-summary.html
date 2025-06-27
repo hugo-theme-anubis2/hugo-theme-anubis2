@@ -24,13 +24,13 @@
         {{ partial "post-language-switcher.html" . }}
     </div>
 
-    {{ if not site.Params.disableSummary }}
+    {{ $params := partial "params-helper.html" . }}
+    {{ if $params.enableSummary }}
         <div class="content post-summary p-summary">
             {{ .Summary | safeHTML }}
         </div>
     {{ end }}
     
-    {{ $params := partial "params-helper.html" . }}
     {{ if and (.Truncated) ($params.enableReadMoreButton) }}
         <div class="read-more">
             <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>

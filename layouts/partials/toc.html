@@ -1,15 +1,11 @@
-{{ $toc := true }}
-{{ if isset .Params "toc" }}
-  {{ $toc = .Params.toc }}
-{{ else }}
-  {{ $toc = ge .WordCount site.Params.tocWordCount }}
-  {{ if and (isset site.Params "toc") (not (site.Params.toc)) }}
-    {{ $toc = false }}
-  {{ end }}
+{{ $params := partial "params-helper.html" . }}
+
+{{ $toc := and (gt $params.tocWordCount 0) (ge .WordCount $params.tocWordCount) }}
+{{ if isset page.Params "toc" }}
+  {{ $toc = page.Params.toc }}
 {{ end }}
 
-
-{{ if $toc }}
+{{ if  $toc }}
   {{ $tocContent := .TableOfContents }}
   {{ if findRE "<li>" $tocContent }}
   <!-- we show the toc only if we have element in .TableOfContents -->

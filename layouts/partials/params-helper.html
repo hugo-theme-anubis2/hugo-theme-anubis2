@@ -122,12 +122,27 @@
   {{ errorf "Anubis2: The parameter 'params.customJS' is deprecated in anubis2. Use 'params.anubis2.customJS' instead (in hugo.yml). or define 'customJS' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
+{{ $enableSummary := true }}
+{{ if isset site.Params.Anubis2 "enablesummary" }}
+  {{ $enableSummary = site.Params.anubis2.enableSummary }}
+{{ else if isset site.Params "disablesummary" }}
+  {{ errorf "Anubis2: The parameter 'params.disableSummary' is deprecated in anubis2. Use 'params.anubis2.enableSummary' instead (in hugo.yml). or define 'enableSummary' in '[params.anubis2]' (in hugo.toml)" }}
+{{ end }}
+
+{{ $tocWordCount := 200 }}
+{{ if isset site.Params.Anubis2 "tocwordcount" }}
+  {{ $tocWordCount = site.Params.anubis2.tocWordCount }}
+{{ else if isset site.Params "toc" }}
+  {{ errorf "Anubis2: The parameter 'params.toc' is deprecated in anubis2. Use 'params.anubis2.tocWordCount' instead (in hugo.yml). or define 'tocWordCount' in '[params.anubis2]' (in hugo.toml)" }}
+{{ end }}
+
 <!-- Check if all params.anubis2 parameters are valid -->
 {{ $avaliableParams := slice 
   "hidefooterattribution"
   "enablemathglobally" 
-  "enablecopycodebutton" 
-  "enablereadmorebutton" 
+  "enablecopycodebutton"
+  "enablesummary"
+  "enablereadmorebutton"
   "enablerssicon"
   "enablecolorthemeswitcher" 
   "colortheme" 
@@ -137,7 +152,8 @@
   "socialicons" 
   "customcss" 
   "customjs" 
-  "services" 
+  "services"
+  "tocwordcount"
 }}
 {{ range $param, $value := site.Params.Anubis2 }}
     {{ if not (in $avaliableParams $param) }}
@@ -169,4 +185,6 @@
   "socialIcons" $socialIcons
   "customCSS" $customCSS
   "customJS" $customJS
+  "enableSummary" $enableSummary
+  "tocWordCount" $tocWordCount
 ) }} 
