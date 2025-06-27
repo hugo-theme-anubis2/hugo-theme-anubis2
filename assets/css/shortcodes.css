@@ -1,0 +1,73 @@
+/* Shortcode Styles for Anubis2 Theme */
+
+.hint-note,
+.hint-tip,
+.hint-warning,
+.hint-caution,
+.hint-important {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-bottom: 1rem;
+    color: inherit;
+    font-size: 14px;
+    border-left: 0.25em solid;
+}
+
+.hint-note::before,
+.hint-tip::before,
+.hint-warning::before,
+.hint-caution::before,
+.hint-important::before {
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 600;
+}
+
+/* Note */
+.hint-note {
+    border-left-color: hsl(212, 92%, 45%);
+}
+
+.hint-note::before {
+    content: "Note";
+    color: hsl(212, 92%, 45%);
+}
+
+/* Tip */
+.hint-tip {
+    border-left-color: hsl(137.23deg 66.01% 30%);
+}
+
+.hint-tip::before {
+    content: "Tip";
+    color: hsl(137.23deg 66.01% 30%);
+}
+
+/* Warning */
+.hint-warning {
+    border-left-color: hsl(40.13deg 100% 30.2%);
+}
+
+.hint-warning::before {
+    content: "Warning";
+    color: hsl(40.13deg 100% 30.2%);
+}
+
+/* Caution */
+.hint-caution {
+    border-left-color: hsl(0, 100%, 50%);
+}
+
+.hint-caution::before {
+    content: "Caution";
+    color: hsl(0, 100%, 50%);
+}
+
+/* Important */
+.hint-important {
+    border-left-color: hsl(280, 100%, 50%);
+}
+
+.hint-important::before {
+    content: "Important";
+    color: hsl(280, 100%, 50%);
+} 

@@ -21,39 +21,25 @@
             {{ end }}
         </div>
         <div style="display:flex; align-items: center; gap:4px">
-
-            {{ $anubis2_police := false }}
-            {{ if isset site.Params "police" }}
-                {{ $anubis2_police = site.Params.police }}
-                {{ warnf "Anubis2: the parameter 'params.police' is deprecated in anubis2 in anubis2, please use `params.anubis2.police` instead." }}
-            {{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "police") }}
-                {{ $anubis2_police = site.Params.Anubis2.police }}
+            {{ $params := partial "params-helper.html" . }}
+            {{ if $params.police }}
+                {{ $info := "info" }}
+                {{ $pattern := "[0-9]+" }}
+                {{ $matches := findRE $pattern $params.police }}
+                {{ if $matches }}
+                    {{ $firstNumber := index $matches 0 }}
+                    {{ $info = print  $firstNumber }}
+                    <img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="备案图标" style="width: 1em;height: 1em;object-fit: contain;">
+                    <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{$info}}">{{ $params.police }}</a>
+                    &nbsp;
+                {{ end }}
             {{ end }}
 
-            {{ $info := "info" }}
-            {{ $pattern := "[0-9]+" }}
-            {{ $matches := findRE $pattern $anubis2_police }}
-            {{ if $matches }}
-                {{ $firstNumber := index $matches 0 }}
-                {{ $info = print  $firstNumber }}
-                <img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="备案图标" style="width: 1em;height: 1em;object-fit: contain;">
-                <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{$info}}">{{ $anubis2_police }}</a>
-                &nbsp;
-            {{ end }}
-
-            {{ $anubis2_icp := false }}
-            {{ if isset site.Params "icp" }}
-                {{ $anubis2_icp = site.Params.icp }}
-                {{ warnf "Anubis2: the parameter `params.icp` is deprecated in anubis2 in anubis2, please use `params.anubis2.icp` instead." }}
-            {{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "icp") }}
-                {{ $anubis2_icp = site.Params.Anubis2.icp }}
-            {{ end }}
-
-            {{ if $anubis2_icp }}
-                <a target="_blank" href="https://beian.miit.gov.cn/">{{ $anubis2_icp }}</a>
+            {{ if $params.icp }}
+                <a target="_blank" href="https://beian.miit.gov.cn/">{{ $params.icp }}</a>
             {{ end }}
         </div>
-        {{ if not site.Params.Anubis2.hideFooterAttribution }}
+        {{ if not $params.hideFooterAttribution }}
             <div>
                 {{ i18n "powered" }} <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, {{ i18n "theme" }} <a target="_blank" rel="noopener noreferrer" href="https://github.com/hugo-theme-anubis2/hugo-theme-anubis2">Anubis2</a>.<br>
             </div>

@@ -1,16 +1,9 @@
 <!DOCTYPE html>
+{{ $params := partial "params-helper.html" . }}
 {{ $dataTheme := "" }}
 
-{{ $anubis2_enableColorThemeSwitcher := true }}
-{{ if isset site.Params "colorthemeswitcher" }}
-    {{ $anubis2_enableColorThemeSwitcher = site.Params.colorThemeSwitcher }}
-    {{ warnf "Anubis2: The parameter 'params.colorThemeSwitcher' is deprecated in anubis2. Use 'params.anubis2.enableColorThemeSwitcher' instead." }}
-{{ else if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "enablecolorthemeswitcher") }}
-    {{ $anubis2_enableColorThemeSwitcher = site.Params.Anubis2.enableColorThemeSwitcher }}
-{{ end }}
-
-{{ if and (ne site.Params.colortheme "auto") (eq $anubis2_enableColorThemeSwitcher false) }}
-    {{ $dataTheme := site.Params.colortheme }}
+{{ if and (ne $params.colorTheme "auto") (eq $params.enableColorThemeSwitcher false) }}
+    {{ $dataTheme = $params.colorTheme }}
 {{ end }}
 
 <html lang="{{ site.Params.locale | default site.LanguageCode }}" data-theme="{{ $dataTheme }}">

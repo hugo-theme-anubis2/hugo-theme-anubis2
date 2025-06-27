@@ -11,21 +11,4 @@
         
         {{ partial "pagination.html" . }}
     </div>
-
-    
-    <!-- Check if all params.anubis2 parameters are valid -->
-    {{ $avaliableParams := slice "enablemathglobally" "enablecopycodebutton" "enablereadmorebutton" "colortheme" "enablecolorthemeswitcher" "police" "icp" "social" "customcss" "customjs" "services" "hidefooterattribution"}}
-    {{ range $param, $value := site.Params.Anubis2 }}
-        {{ if not (in $avaliableParams $param) }}
-            {{ warnf "Anubis2: params.anubis2.%v is not a valid parameter" $param }}
-        {{ end }}
-    {{ end }}
-
-    <!-- Check if all params.anubis2.services parameters are valid -->
-    {{ $avaliableServices := slice "discus" "giscus" "utterances" "googleanalytics" "umami" }}
-    {{ range $param, $value := site.Params.Anubis2.services }}
-        {{ if not (in $avaliableServices $param) }}
-            {{ warnf "Anubis2: params.anubis2.services.%v is not a valid parameter" $param }}
-        {{ end }}
-    {{ end }}
 {{ end }}

@@ -30,26 +30,19 @@
         </div>
     {{ end }}
     
-    {{ $anubis2_showReadMoreButton := false }}
-    {{ if site.Params.readMore }}
-        {{ $anubis2_showReadMoreButton = site.Params.readMore }}
-        {{ warnf "Anubis2: The `readMore` parameter is deprecated in anubis2. Use `anubis2.showReadMoreButton` instead." }}
-    {{ else if site.Params.Anubis2.showReadMoreButton }}
-        {{ $anubis2_showReadMoreButton = site.Params.Anubis2.showReadMoreButton }}
-    {{ end }}
-
-    {{ if and (.Truncated) ($anubis2_showReadMoreButton) }}
+    {{ $params := partial "params-helper.html" . }}
+    {{ if and (.Truncated) ($params.enableReadMoreButton) }}
         <div class="read-more">
             <a class="u-url" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
         </div>
     {{ end }}
     
     {{ if .Store.Get "hasMermaid" }}
-        {{ partial "features/mermaid_support.html" . }}
+        {{ partial "features/mermaid.html" . }}
     {{ end }}
     
     {{ if .Params.math }}
-        {{ partial "features/mathjax_support.html" . }}
+        {{ partial "features/mathjax.html" . }}
     {{ end }}
 
     {{ partial "post-info.html" . }}

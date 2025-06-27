@@ -1,12 +1,4 @@
 {{ define "main" }}
-    {{/*  {{ if .Menus }}
-        <nav class="post-navigation">
-        {{ range .Menus }}
-            <a href="{{ .ConfiguredURL | absLangURL }}" title="{{ .Title }}">{{ .Name | markdownify }}</a>
-        {{ end }}
-        </nav>
-    {{ end }}  */}}
-
     <article class="post h-entry">
         <div class="post-header">
             <header>
@@ -35,14 +27,10 @@
         <div class="content e-content">
             {{ .Content }}
         </div>
-
     </article>
 
-    {{ $readNextPosts := 3}}
-    {{ if site.Params.readNextPosts }}
-        {{ $readNextPosts = site.Params.readNextPosts }}
-    {{ end }}
-
+    {{ $params := partial "params-helper.html" . }}
+    {{ $readNextPosts := $params.readNextPosts }}
     {{ if gt $readNextPosts 0 }}
         {{ $related := site.RegularPages.Related . | first $readNextPosts }}
         {{ with $related }}
@@ -55,24 +43,17 @@
         {{ end }}
     {{ end }}
 
-    {{ if and (site.Params.paginationSinglePost) (ne .Type "page") }}
-        {{ partial "post-pagination.html" . }}
-    {{ end }}
-
-    {{ if not .Params.disableComments }}
-        {{ partial "feat-comments/comments.html" . }}
-    {{ end }}
+    {{ partial "feat-comments/comments.html" . }}
 
     {{/*  When you use ```mermaid``, render-codeblock-mermaid.html is called and
         `.Store.Set "hasMermaid"` is executed.
         `.Store.Get "hasMermaid"` will return true and mermaid.js will be loaded.
     */}}
-
     {{ if .Store.Get "hasMermaid" }}
-        {{ partial "features/mermaid_support.html" . }}
+        {{ partial "features/mermaid.html" . }}
     {{ end }}
     
     {{ if .Params.math }}
-        {{ partial "features/mathjax_support.html" . }}
+        {{ partial "features/mathjax.html" . }}
     {{ end }}
 {{ end }}
