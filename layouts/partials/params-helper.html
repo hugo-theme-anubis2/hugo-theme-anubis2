@@ -136,6 +136,12 @@
   {{ errorf "Anubis2: The parameter 'params.toc' is deprecated in anubis2. Use 'params.anubis2.tocWordCount' instead (in hugo.yml). or define 'tocWordCount' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
+<!-- This will affect the links in markdown. Not affect the site navigation. -->
+{{ $openInNewTab := true }}
+{{ if isset site.Params.Anubis2 "openinnewtab" }}
+  {{ $openInNewTab = site.Params.anubis2.openInNewTab }}
+{{ end }}
+
 <!-- Check if all params.anubis2 parameters are valid -->
 {{ $avaliableParams := slice 
   "hidefooterattribution"
@@ -154,6 +160,7 @@
   "customjs" 
   "services"
   "tocwordcount"
+  "openinnewtab"
 }}
 {{ range $param, $value := site.Params.Anubis2 }}
     {{ if not (in $avaliableParams $param) }}
@@ -187,4 +194,5 @@
   "customJS" $customJS
   "enableSummary" $enableSummary
   "tocWordCount" $tocWordCount
+  "openInNewTab" $openInNewTab
 ) }} 

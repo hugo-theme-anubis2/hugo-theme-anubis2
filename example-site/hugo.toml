@@ -31,7 +31,8 @@ locale = "en-us"
     enableRssIcon = true
     enableColorThemeSwitcher = true
     colorTheme = "auto"
-
+    openInNewTab = true # open links in new tab
+    
     tocWordCount = 0 # 0: disable toc. N: show toc if the post has more than N words.
     readNextPosts = 10 # 0: disable this feature. 1: show 1 related posts. N: show N related posts.
 
