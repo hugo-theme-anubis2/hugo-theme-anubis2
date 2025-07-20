@@ -9,39 +9,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
 
   <channel>
-    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
-    <link>{{ .RelPermalink }}</link>
-    <description>{{ .Site.Title }}{{ if ne  .Title  .Site.Title }}{{ with .Title }} ({{.}}){{ end }}{{ end }}</description>
-    <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
+    <title>{{ with .Site.Params.feedTitle }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+    <link>{{ .Site.BaseURL }}</link>
+    <description>Recent blog posts on {{ .Site.Title }}</description>
+    {{ with .Site.Params.copyright }}
+    <copyright>{{ . }}</copyright>{{ end }}
+    <generator>Hugo (https://gohugo.io)</generator>
+    {{ with .Site.LanguageCode }}
     <language>{{.}}</language>{{end}}
-    {{ with .Site.Params.author }}
-      {{ with .email }}
-        <managingEditor>{{.}}
-          {{ with $.Site.Params.author.name }}
-            ({{.}})
-          {{end}}
-        </managingEditor>
-      {{end}}
-
-      {{ with .Site.Params.author.email }}
-        <webMaster>
-          {{.}}
-          {{ with $.Site.Params.author.name }}
-            ({{.}})
-          {{end}}
-        </webMaster>
-      {{end}}
-    {{ end }}
-
-    {{ with .Site.Copyright }}
-    <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
-    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    {{ with .Site.Params.author.name }}
+    <managingEditor>{{ with $.Site.Params.author.email }}{{ . }}{{ with $.Site.Params.author.name }} ({{ . }}){{ end }}{{ end }}</managingEditor>{{ end }}
+    {{ with .Site.Params.author.name }}
+    <webMaster>{{ with $.Site.Params.author.email }}{{ . }}{{ with $.Site.Params.author.name }} ({{ . }}){{ end }}{{ end }}</webMaster>{{ end }}
+    {{ if not .Date.IsZero }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 +0800" | safeHTML }}</lastBuildDate>{{ end }}
     {{ with .OutputFormats.Get "RSS" }}
-    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .RelPermalink .MediaType | safeHTML }}
-    {{ end }}
-    {{ range $pages }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}{{ end }}
+    {{ range $index, $page := $pages }}
+
     <item>
       <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 +0800" | safeHTML }}</pubDate>
+      {{ with .Site.Params.author.name }}
+      <author>{{ with $.Site.Params.author.email }}{{ . }}{{ with $.Site.Params.author.name }} ({{ . }}){{ end }}{{ end }}</author>{{ end }}
+
       {{ $cover := "" }}
       {{ with $page.Params.cover }}
         {{ $res := $page.Resources.GetMatch . }}
@@ -56,6 +48,11 @@
         <media:content url="{{ $cover }}" medium="image" />
         <media:title>Cover Image</media:title>
       {{ end }}
+
+      <description>
+      {{ .Summary | plainify | htmlEscape }}
+      </description>
+      <guid isPermaLink="true">{{ .Permalink }}</guid>
     </item>
     {{ end }}
   </channel>
