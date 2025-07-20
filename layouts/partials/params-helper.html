@@ -170,10 +170,12 @@
 
 <!-- Check if all params.anubis2.services parameters are valid -->
 {{ $avaliableServices := slice "discus" "giscus" "utterances" "googleanalytics" "umami" }}
+{{ $services := slice }}
 {{ range $param, $value := site.Params.Anubis2.services }}
     {{ if not (in $avaliableServices $param) }}
         {{ warnf "Anubis2: params.anubis2.services.%v is not a valid parameter" $param }}
     {{ end }}
+    {{ $services = $services | append $param }}
 {{ end }}
 
 
@@ -195,4 +197,5 @@
   "enableSummary" $enableSummary
   "tocWordCount" $tocWordCount
   "openInNewTab" $openInNewTab
+  "services" $services
 ) }} 

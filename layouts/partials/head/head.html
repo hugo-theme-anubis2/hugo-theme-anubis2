@@ -58,12 +58,10 @@
   {{ partial "resource.html" (dict "context" $ "type" "js" "filename" . ) }}
 {{- end }}
 
-{{ $params := partial "params-helper.html" . }}
-
-{{ if $params.services.googleanalytics }}
-    {{ partial "analytics/google_analytics.html" . }}
+{{ if and $params.services (in $params.services "umami") }}
+    {{ partial "analytics/umami_analytics.html" . }}
 {{ end }}
 
-{{ if $params.services.umami }} 
-    {{ partial "analytics/umami_analytics.html" . }}
+{{ if and $params.services (in $params.services "googleanalytics") }}
+    {{ partial "analytics/google_analytics.html" . }}
 {{ end }}
