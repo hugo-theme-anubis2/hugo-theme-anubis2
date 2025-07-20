@@ -1,6 +1,6 @@
 {{ $dateFormat := "2006-01-02" }}
-{{ if .Site.Params.dateFormat }}
-    {{ $dateFormat = .Site.Params.dateFormat }}
+{{ if site.Params.dateFormat }}
+    {{ $dateFormat = site.Params.dateFormat }}
 {{ end }}
 {{ $machineDateFormat := "2006-01-02" }}
 
@@ -19,7 +19,7 @@
     {{ end }}
 
     <a class="post-hidden-url u-url" href="{{ .RelPermalink }}">{{ .RelPermalink }}</a>
-    <a href="{{ .Site.BaseURL }}" class="p-name p-author post-hidden-author h-card" rel="me">{{ .Params.author | default .Site.Params.author }}</a>
+    <a href="{{ site.BaseURL }}" class="p-name p-author post-hidden-author h-card" rel="me">{{ .Params.author | default site.Params.author }}</a>
 
 
     <div class="post-taxonomies">
@@ -42,7 +42,7 @@
         {{ if .Params.authors }}
             <ul class="post-authors">
                 {{ range $author_name := .Params.authors }}
-                    {{ $author := ($.Site.GetPage (printf "/authors/%s" $author_name | urlize )) }}
+                    {{ $author := (site.GetPage (printf "/authors/%s" $author_name | urlize )) }}
                     <li><a href="{{ $author.RelPermalink }}">@{{ $author_name }}</a></li>
                 {{ end }}
             </ul>

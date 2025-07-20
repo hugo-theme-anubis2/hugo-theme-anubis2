@@ -5,7 +5,7 @@
 
     <div class="articles h-feed">
         <h1 class="post-title">{{ i18n .Title | markdownify }}</h1>
-        {{ $showFullContent := in .Site.Params.sectionsWithFullContentOnListPage .Section }}
+        {{ $showFullContent := in site.Params.sectionsWithFullContentOnListPage .Section }}
         {{ $pages := where .Pages "Params.hidden" "!=" true}}
 
         {{ $pagesRange := $pages}}

@@ -1,0 +1,2 @@
+{{ $params := partial "params-helper.html" . }}
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if $params.openInNewTab }} target="_blank" rel="noopener"{{ end }}>{{ .Text | safeHTML }}</a> 

@@ -1,15 +1,9 @@
 
 {{ $opts := dict "transpiler" "libsass" "targetPath" "css/style.css" }}
 
-{{ $anubis2_customCSS := slice }}
-{{ if isset site.Params "customcss" }}
-  {{ $anubis2_customCSS = site.Params.customCSS }}
-  {{ warnf "Anubis2: The parameter 'params.customCSS' is deprecated. Use 'params.anubis2.customCSS' instead." }}
-{{ else if isset site.Params.Anubis2 "customcss" }}
-  {{ $anubis2_customCSS = site.Params.Anubis2.customCSS }}
-{{ end }}
+{{ $params := partial "params-helper.html" . }}
 
-{{ range $anubis2_customCSS }}
+{{ range $params.customCSS }}
     <!-- Support remote custom css -->
     {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
       <link rel="stylesheet" href="{{ . }}" crossorigin="anonymous">

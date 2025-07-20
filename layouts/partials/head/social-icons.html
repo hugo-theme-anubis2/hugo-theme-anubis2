@@ -1,26 +1,17 @@
 <ul class="social-icons noselect">
 
-{{ $anubis2_social := slice }} <!--empty list-->
+{{ $params := partial "params-helper.html" . }}
 
-{{ if and (isset site.Params "anubis2") (isset site.Params.Anubis2 "social") }}
-    {{ $anubis2_social = site.Params.Anubis2.social }}
-{{ else if isset site.Params "social" }}
-    {{ $anubis2_social = site.Params.Social }}
-{{ end }}
 
-{{ if site.Params.Social }}
-    {{ warnf "Anubis2: The parameter `params.social` is deprecated. Use `params.anubis2.social` instead." }}
-{{ end }}
-
-{{ range $anubis2_social }}
-    {{ if and (isset $.Site.Data.social.social_icons .id) (isset . "url") }}
+{{ range $params.socialIcons }}
+    {{ if and (isset site.Data.social.social_icons .id) (isset . "url") }}
         <li>
             <a {{ printf "href=%q" .url | safeHTMLAttr }} title="{{ humanize .id }}" rel="me">
             {{ partial "features/font-awesome.html" (dict "iconName" .id "custom" false) }}
             </a>
         </li>
-    {{ else if and (isset $.Site.Data.social.social_icons .id) (isset . "name") }}
-        {{ $url := index $.Site.Data.social.social_icons .id }}
+    {{ else if and (isset site.Data.social.social_icons .id) (isset . "name") }}
+        {{ $url := index site.Data.social.social_icons .id }}
         {{ $ref := printf $url .name }}
         <li>
             <a {{ printf "href=%q" $ref | safeHTMLAttr }} title="{{ humanize .id }}" rel="me">
@@ -36,13 +27,8 @@
     {{ end }}
 {{ end }}
 
-{{ $rssIcon := true }}
-{{ if isset .Site.Params "rssIcon" }}
-    {{ $rssIcon = .Site.Params.rssIcon }}
-{{ end }}
-
-{{ if $rssIcon }}
-    {{ with .Site.Home.OutputFormats.Get "rss" -}}
+{{ if $params.enableRssIcon }}
+    {{ with site.Home.OutputFormats.Get "rss" -}}
         <li>
             <a {{ printf "href=%q" .RelPermalink | safeHTMLAttr }} title="RSS" rel="me">
             {{ partial "features/font-awesome.html" (dict "iconName" "rss" "custom" false) }}

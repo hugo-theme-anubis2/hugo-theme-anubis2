@@ -11,30 +11,36 @@ pagerSize = 5
 name = "Junyi"
 email  = "me@junyi.dev"
 location = "Singapore"
+avatar = "https://avatars.githubusercontent.com/u/123456789?v=4"
 
 [params]
 description = "Anubis2 is another simple minimalist theme for Hugo blog engine."
 dateFormat = "2006-01-02"
 paginationSinglePost = true
 
-readNextPosts = 2
-
-rssAsSocialIcon = true
+rssIcon = false
 locale = "en-us"
-toc = true
 
 [params.anubis2]
+    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
+
     enableMathGlobally = true # MathJax (default is false)
     enableCopyCodeButton = true
-    enableReadMoreButton = true
-    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
-    colorTheme = "auto"
+    enableSummary = true # the summary is the preview of the post, if you disable it, the post will be shown only with the title.
+    enableReadMoreButton = false
+    enableRssIcon = true
     enableColorThemeSwitcher = true
+    colorTheme = "auto"
+    openInNewTab = true # open links in new tab
+    
+    tocWordCount = 0 # 0: disable toc. N: show toc if the post has more than N words.
+    readNextPosts = 10 # 0: disable this feature. 1: show 1 related posts. N: show N related posts.
 
     police = "京公网安备 12345678号" # for China ICP police beian
     icp = "京ICP备xxxxx号-1" # for China ICP license
 
-    social = [
+    ## Social Icons
+    socialIcons = [
         { id = "docs", url = "https://gohugo.io/documentation/" },
         { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
         { id = "linkedin", url = "https://www.linkedin.com/" },

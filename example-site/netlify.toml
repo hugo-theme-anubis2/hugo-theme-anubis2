@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --gc --minify"
+command = "hugo --gc --minify --config hugo.full.toml"
 
 [context.production.environment]
 HUGO_VERSION = "0.145.0"

@@ -1,6 +1,6 @@
-{{ $anubis2_customJS := site.Params.Anubis2.customJS }}
+{{ $params := partial "params-helper.html" . }}
 
-{{ range $anubis2_customJS }}
+{{ range $params.customJS }}
     <!-- Support remote custom css -->
     {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
       <script src="{{ . }}" crossorigin="anonymous"></script>
