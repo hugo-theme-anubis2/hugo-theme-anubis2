@@ -38,3 +38,6 @@ unsafe = true # Enable unsafe mode to have a better experience
 
 [markup.highlight]
 style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
+
+[params.anubis2]
+  # Leave all parameters empty to use the default values.
