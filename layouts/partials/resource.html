@@ -17,13 +17,13 @@
     {{ if eq .type "css" }}
         <link rel="stylesheet" href="{{ $resource.RelPermalink }}" integrity="{{ $resource.Data.Integrity }}">
     {{ else if eq .type "js" }}
-        <script src="{{ $resource.RelPermalink }}" type="text/javascript" charset="utf-8" integrity="{{ $resource.Data.Integrity }}"></script>
+        <script src="{{ $resource.RelPermalink }}" type="text/javascript" charset="utf-8" integrity="{{ $resource.Data.Integrity }}" defer></script>
     {{ end }}
 <!-- For backward compatibility -->
 {{ else }}
     {{ if eq .type "css" }}
         <link rel="stylesheet" href="{{ .filename | absURL }}?rnd={{ now.Unix }}">
     {{ else if eq .type "js" }}
-        <script src="{{ .filename | absURL }}?rnd={{ now.Unix }}" type="text/javascript" charset="utf-8"></script>
+        <script src="{{ .filename | absURL }}?rnd={{ now.Unix }}" type="text/javascript" charset="utf-8" defer></script>
     {{ end }}
 {{ end }}
