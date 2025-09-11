@@ -23,7 +23,9 @@
         </div>
         <div style="display:flex; align-items: center; gap:4px">
             {{ $params := partial "params-helper.html" . }}
-            {{ if $params.police }}
+            {{ $lang := lower site.Language.Lang }}
+            {{ $isZh := hasPrefix $lang "zh" }}
+            {{ if and $params.police $isZh }}
                 {{ $info := "info" }}
                 {{ $pattern := "[0-9]+" }}
                 {{ $matches := findRE $pattern $params.police }}
@@ -36,7 +38,7 @@
                 {{ end }}
             {{ end }}
 
-            {{ if $params.icp }}
+            {{ if and $params.icp $isZh }}
                 <a target="_blank" href="https://beian.miit.gov.cn/">{{ $params.icp }}</a>
             {{ end }}
         </div>
