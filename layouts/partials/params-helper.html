@@ -12,7 +12,7 @@
 
 {{/* Get color theme with validation */}}
 {{ $colorTheme := "light" }}
-{{ if isset site.Params.Anubis2 "colortheme" }}
+{{ if isset site.Params.anubis2 "colortheme" }}
   {{ $colorTheme = site.Params.anubis2.colorTheme | lower }}
 {{ end }}
 {{ if isset site.Params "colortheme" }}
@@ -26,7 +26,7 @@
 
 {{/* Get color theme switcher setting */}}
 {{ $enableColorThemeSwitcher := true }}
-{{ if isset site.Params.Anubis2 "enablecolorthemeswitcher" }}
+{{ if isset site.Params.anubis2 "enablecolorthemeswitcher" }}
   {{ $enableColorThemeSwitcher = site.Params.anubis2.enableColorThemeSwitcher }}
 {{ end }}
 {{ if isset site.Params "colorthemeswitcher" }}
@@ -37,13 +37,13 @@
 
 {{/* Get copy code button setting */}}
 {{ $enableCopyCodeButton := true }}
-{{ if isset site.Params.Anubis2 "enablecopycodebutton" }}
+{{ if isset site.Params.anubis2 "enablecopycodebutton" }}
   {{ $enableCopyCodeButton = site.Params.anubis2.enableCopyCodeButton }}
 {{ end }}
 
 {{/* Get read more button setting */}}
 {{ $enableReadMoreButton := false }}
-{{ if isset site.Params.Anubis2 "enablereadmorebutton" }}
+{{ if isset site.Params.anubis2 "enablereadmorebutton" }}
   {{ $enableReadMoreButton = site.Params.anubis2.enableReadMoreButton }}
 {{ else if isset site.Params "readmore" }}
   {{ errorf "Anubis2: The parameter 'params.readMore' is deprecated in anubis2. Use 'params.anubis2.enableReadMoreButton' instead (in hugo.yml). or define 'enableReadMoreButton' in '[params.anubis2]' (in hugo.toml)" }}
@@ -51,7 +51,7 @@
 
 {{/* Get footer attribution setting */}}
 {{ $hideFooterAttribution := false }}
-{{ if isset site.Params.Anubis2 "hidefooterattribution" }}
+{{ if isset site.Params.anubis2 "hidefooterattribution" }}
   {{ $hideFooterAttribution = site.Params.anubis2.hideFooterAttribution }}
 {{ end }}
 {{ if isset site.Params "hidefooterattribution" }}
@@ -59,7 +59,7 @@
 {{ end }}
 
 {{ $police := false }}
-{{ if isset site.Params.Anubis2 "police" }}
+{{ if isset site.Params.anubis2 "police" }}
   {{ $police = site.Params.anubis2.police }}
 {{ end }}
 {{ if isset site.Params "police" }}
@@ -67,7 +67,7 @@
 {{ end }}
 
 {{ $icp := false }}
-{{ if isset site.Params.Anubis2 "icp" }}
+{{ if isset site.Params.anubis2 "icp" }}
   {{ $icp = site.Params.anubis2.icp }}
 {{ end }}
 {{ if isset site.Params "icp" }}
@@ -76,7 +76,7 @@
 
 
 {{ $enableRssIcon := true }}
-{{ if isset site.Params.Anubis2 "enablerssicon" }}
+{{ if isset site.Params.anubis2 "enablerssicon" }}
   {{ $enableRssIcon = site.Params.anubis2.enableRssIcon }}
 {{ else if isset site.Params "rssassocialicon" }}
   {{ errorf "Anubis2: The parameter 'params.rssAsSocialIcon' is deprecated in anubis2. Use 'params.anubis2.enableRssIcon' instead (in hugo.yml). or define 'enableRssIcon' in '[params.anubis2]' (in hugo.toml)" }}
@@ -85,7 +85,7 @@
 {{ end }}
 
 {{ $readNextPosts := 0 }}
-{{ if isset site.Params.Anubis2 "readnextposts" }}
+{{ if isset site.Params.anubis2 "readnextposts" }}
  {{ if gt site.Params.anubis2.readNextPosts 0 }}
   {{ $readNextPosts = site.Params.anubis2.readNextPosts }}
  {{ end }}
@@ -94,7 +94,7 @@
 {{ end }}
 
 {{ $socialIcons := slice }}
-{{ if isset site.Params.Anubis2 "socialicons" }}
+{{ if isset site.Params.anubis2 "socialicons" }}
   {{ $socialIcons = site.Params.anubis2.socialIcons }}
 {{ end }}
 {{ if isset site.Params "social" }}
@@ -102,35 +102,35 @@
 {{ end }}
 
 {{ $enableMathGlobally := false }}
-{{ if isset site.Params.Anubis2 "enablemathglobally" }}
+{{ if isset site.Params.anubis2 "enablemathglobally" }}
   {{ $enableMathGlobally = site.Params.anubis2.enableMathGlobally }}
 {{ else if isset site.Params "math" }}
   {{ errorf "Anubis2: The parameter 'params.math' is deprecated in anubis2. Use 'params.anubis2.enableMathGlobally' instead (in hugo.yml). or define 'enableMathGlobally' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
 {{ $customCSS := slice }}
-{{ if isset site.Params.Anubis2 "customcss" }}
+{{ if isset site.Params.anubis2 "customcss" }}
   {{ $customCSS = site.Params.anubis2.customCSS }}
 {{ else if isset site.Params "customcss" }}
   {{ errorf "Anubis2: The parameter 'params.customCSS' is deprecated in anubis2. Use 'params.anubis2.customCSS' instead (in hugo.yml). or define 'customCSS' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
 {{ $customJS := slice }}
-{{ if isset site.Params.Anubis2 "customjs" }}
+{{ if isset site.Params.anubis2 "customjs" }}
   {{ $customJS = site.Params.anubis2.customJS }}
 {{ else if isset site.Params "customjs" }}
   {{ errorf "Anubis2: The parameter 'params.customJS' is deprecated in anubis2. Use 'params.anubis2.customJS' instead (in hugo.yml). or define 'customJS' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
 {{ $enableSummary := true }}
-{{ if isset site.Params.Anubis2 "enablesummary" }}
+{{ if isset site.Params.anubis2 "enablesummary" }}
   {{ $enableSummary = site.Params.anubis2.enableSummary }}
 {{ else if isset site.Params "disablesummary" }}
   {{ errorf "Anubis2: The parameter 'params.disableSummary' is deprecated in anubis2. Use 'params.anubis2.enableSummary' instead (in hugo.yml). or define 'enableSummary' in '[params.anubis2]' (in hugo.toml)" }}
 {{ end }}
 
 {{ $tocWordCount := 200 }}
-{{ if isset site.Params.Anubis2 "tocwordcount" }}
+{{ if isset site.Params.anubis2 "tocwordcount" }}
   {{ $tocWordCount = site.Params.anubis2.tocWordCount }}
 {{ else if isset site.Params "toc" }}
   {{ errorf "Anubis2: The parameter 'params.toc' is deprecated in anubis2. Use 'params.anubis2.tocWordCount' instead (in hugo.yml). or define 'tocWordCount' in '[params.anubis2]' (in hugo.toml)" }}
@@ -138,7 +138,7 @@
 
 <!-- This will affect the links in markdown. Not affect the site navigation. -->
 {{ $openInNewTab := true }}
-{{ if isset site.Params.Anubis2 "openinnewtab" }}
+{{ if isset site.Params.anubis2 "openinnewtab" }}
   {{ $openInNewTab = site.Params.anubis2.openInNewTab }}
 {{ end }}
 
@@ -162,7 +162,7 @@
   "tocwordcount"
   "openinnewtab"
 }}
-{{ range $param, $value := site.Params.Anubis2 }}
+{{ range $param, $value := site.Params.anubis2 }}
     {{ if not (in $avaliableParams $param) }}
         {{ warnf "Anubis2: params.anubis2.%v is not a valid parameter" $param }}
     {{ end }}
@@ -171,7 +171,7 @@
 <!-- Check if all params.anubis2.services parameters are valid -->
 {{ $avaliableServices := slice "discus" "giscus" "utterances" "googleanalytics" "umami" }}
 {{ $services := slice }}
-{{ range $param, $value := site.Params.Anubis2.services }}
+{{ range $param, $value := site.Params.anubis2.services }}
     {{ if not (in $avaliableServices $param) }}
         {{ warnf "Anubis2: params.anubis2.services.%v is not a valid parameter" $param }}
     {{ end }}

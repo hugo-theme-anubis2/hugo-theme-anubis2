@@ -857,6 +857,33 @@ code.has-jax {
     justify-content: space-between;
 }
 
+/* Footer utilities */
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-licenses {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-stat-link {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: none;
+    cursor: pointer;
+    color: var(--pagination-link-color);
+}
+
+.footer-beian-icon {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+}
+
 ul.language-select,
 ul.footer-menu {
     padding-left: 0;
