@@ -3,16 +3,7 @@
   
   Centralized parameter handling for Anubis2. Returns a dict of normalized
   (lowercase) keys and validates configuration with helpful warnings/errors.
-  Uses .Scratch to cache results for performance if set by caller.
 */}}
-
-{{/* Return cached result if available */}}
-{{ with .Scratch }}
-  {{ $cached := .Get "anubis2_params" }}
-  {{ with $cached }}
-    {{ return . }}
-  {{ end }}
-{{ end }}
 
 {{ if isset site.Params "anubis2" }}
 {{ else }}
@@ -250,8 +241,8 @@
 {{ if isset site.Params.anubis2 "readnextposts" }}
   {{ $rawRnp := site.Params.anubis2.readnextposts }}
   {{ $t := printf "%T" $rawRnp }}
-  {{ if ne $t "int" }}
-    {{ warnf "Anubis2: params.anubis2.readnextposts should be an integer; got %s" $t }}
+  {{ if ne $t "int64" }}
+    {{ warnf "Anubis2: params.anubis2.readnextposts should be an int64; got %s" $t }}
   {{ end }}
 {{ end }}
 
@@ -286,7 +277,4 @@
   "openInNewTab" $openInNewTab
   "services" $services
 ) }}
-{{ with .Scratch }}
-  {{ .Set "anubis2_params" $ret }}
-{{ end }}
 {{ return $ret }}

@@ -915,7 +915,7 @@ ul.footer-menu>li {
 
 .highlight:hover .highlight-copy-btn {
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
 }
 
 .highlight-copy-btn {
@@ -923,7 +923,7 @@ ul.footer-menu>li {
     position: absolute;
     top: 0px;
     right: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
     border-radius: 6px;
     padding: 1px;
     font-size: 0.7em;
@@ -940,6 +940,14 @@ ul.footer-menu>li {
     transition-duration: .1s;
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
+}
+
+/* Make copy button visible when focused via keyboard */
+.highlight:focus-within .highlight-copy-btn,
+.highlight .highlight-copy-btn:focus,
+.highlight .highlight-copy-btn:focus-visible {
+    display: inline-block;
+    outline: none;
 }
 
 .highlight-copy-btn,
