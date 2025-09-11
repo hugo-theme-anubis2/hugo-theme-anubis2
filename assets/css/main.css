@@ -956,6 +956,20 @@ ul.footer-menu>li {
     margin: 8px;
 }
 
+/* Touch devices: show button without hover */
+@media (hover: none) and (pointer: coarse) {
+    .highlight .highlight-copy-btn {
+        display: inline-block;
+    }
+}
+
+/* Reduced motion: remove transitions */
+@media (prefers-reduced-motion: reduce) {
+    .highlight-copy-btn {
+        transition: none;
+    }
+}
+
 /* Others */
 .noselect {
     -webkit-touch-callout: none;
