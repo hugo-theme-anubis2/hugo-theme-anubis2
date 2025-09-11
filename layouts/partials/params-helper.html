@@ -1,9 +1,18 @@
 {{/* 
   Anubis2 Theme Parameter Helper
   
-  This partial provides consistent parameter handling for the Anubis2 theme.
-  It centralizes parameter validation and provides default values.
+  Centralized parameter handling for Anubis2. Returns a dict of normalized
+  (lowercase) keys and validates configuration with helpful warnings/errors.
+  Uses .Scratch to cache results for performance if set by caller.
 */}}
+
+{{/* Return cached result if available */}}
+{{ with .Scratch }}
+  {{ $cached := .Get "anubis2_params" }}
+  {{ with $cached }}
+    {{ return . }}
+  {{ end }}
+{{ end }}
 
 {{ if isset site.Params "anubis2" }}
 {{ else }}
@@ -143,7 +152,7 @@
 {{ end }}
 
 <!-- Check if all params.anubis2 parameters are valid -->
-{{ $avaliableParams := slice 
+{{ $availableParams := slice 
   "hidefooterattribution"
   "enablemathglobally" 
   "enablecopycodebutton"
@@ -163,19 +172,39 @@
   "openinnewtab"
 }}
 {{ range $param, $value := site.Params.anubis2 }}
-    {{ if not (in $avaliableParams $param) }}
+    {{ if not (in $availableParams $param) }}
         {{ warnf "Anubis2: params.anubis2.%v is not a valid parameter" $param }}
     {{ end }}
 {{ end }}
 
 <!-- Check if all params.anubis2.services parameters are valid -->
-{{ $avaliableServices := slice "disqus" "giscus" "utterances" "googleanalytics" "umami" }}
+{{ $availableServices := slice "disqus" "giscus" "utterances" "googleanalytics" "umami" }}
 {{ $services := dict }}
 {{ range $param, $value := site.Params.anubis2.services }}
-    {{ if not (in $avaliableServices $param) }}
+    {{ if not (in $availableServices $param) }}
         {{ warnf "Anubis2: params.anubis2.services.%v is not a valid parameter" $param }}
     {{ end }}
     {{ $services = merge $services (dict $param $value) }}
+{{ end }}
+
+<!-- Migration warnings for legacy camelCase keys -->
+{{ if isset site.Params.anubis2.services "googleAnalytics" }}
+  {{ warnf "Anubis2: Found legacy key 'params.anubis2.services.googleAnalytics' — use 'googleanalytics' (lowercase)." }}
+{{ end }}
+{{ $legacyFields := slice "repoId" "categoryId" "issueTerm" "shortName" "shareUrl" "dataMapping" "lazyLoad" }}
+{{ range $svc, $cfg := site.Params.anubis2.services }}
+  {{ range $legacy := $legacyFields }}
+    {{ if isset $cfg $legacy }}
+      {{ warnf "Anubis2: Found legacy key 'params.anubis2.services.%s.%s' — use lowercase '%s'." $svc $legacy (lower $legacy) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $legacyTop := slice "colorTheme" "enableColorThemeSwitcher" "enableCopyCodeButton" "enableReadMoreButton" "hideFooterAttribution" "enableRssIcon" "readNextPosts" "socialIcons" "enableMathGlobally" "customCSS" "customJS" "enableSummary" "tocWordCount" "openInNewTab" }}
+{{ range $k := $legacyTop }}
+  {{ if isset site.Params.anubis2 $k }}
+    {{ warnf "Anubis2: Found legacy key 'params.anubis2.%s' — use lowercase '%s'." $k (lower $k) }}
+  {{ end }}
 {{ end }}
 
 <!-- Validate required service parameters using a central definition -->
@@ -217,9 +246,28 @@
   {{ end }}
 {{ end }}
 
+<!-- Basic type checks -->
+{{ if isset site.Params.anubis2 "readnextposts" }}
+  {{ $rawRnp := site.Params.anubis2.readnextposts }}
+  {{ $t := printf "%T" $rawRnp }}
+  {{ if ne $t "int" }}
+    {{ warnf "Anubis2: params.anubis2.readnextposts should be an integer; got %s" $t }}
+  {{ end }}
+{{ end }}
+
+{{ $boolTop := slice "enablecolorthemeswitcher" "enablecopycodebutton" "enablerssicon" "enablereadmorebutton" "enablemathglobally" "enablesummary" "openinnewtab" }}
+{{ range $k := $boolTop }}
+  {{ if isset site.Params.anubis2 $k }}
+    {{ $t := printf "%T" (index site.Params.anubis2 $k) }}
+    {{ if ne $t "bool" }}
+      {{ warnf "Anubis2: params.anubis2.%s should be boolean; got %s" $k $t }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
 
 <!-- Return parameter map -->
-{{ return (dict 
+{{ $ret := (dict 
   "colorTheme" $colorTheme
   "enableColorThemeSwitcher" $enableColorThemeSwitcher
   "enableMathGlobally" $enableMathGlobally
@@ -237,4 +285,8 @@
   "tocWordCount" $tocWordCount
   "openInNewTab" $openInNewTab
   "services" $services
-) }} 
+) }}
+{{ with .Scratch }}
+  {{ .Set "anubis2_params" $ret }}
+{{ end }}
+{{ return $ret }}

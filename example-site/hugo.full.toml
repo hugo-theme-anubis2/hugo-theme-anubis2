@@ -80,7 +80,7 @@ locale = "en-us"
         # [params.anubis2.services.utterances]
         #   repo = "hugo-theme-anubis2/hugo-theme-anubis2"
         #   theme = "github-light"
-        #   issueTerm = "pathname"
+        #   issueterm = "pathname"
 
         [params.anubis2.services.umami]
             # Umami Analytics https://umami.is/
@@ -88,10 +88,10 @@ locale = "en-us"
             url = "https://umami.xtra.science/script.js"
             datacache = false
             dnt       = false
-            # if shareUrl is set, a button will be shown on the end of each page
-            shareUrl = "https://cloud.umami.is/share/CUTKp6yiDQllAqq9/hugo-theme-anubis2.netlify.app"
+            # if shareurl is set, a button will be shown on the end of each page
+            shareurl = "https://cloud.umami.is/share/CUTKp6yiDQllAqq9/hugo-theme-anubis2.netlify.app"
 
-        [params.anubis2.services.googleAnalytics]
+        [params.anubis2.services.googleanalytics]
             # Google Analytics https://analytics.google.com/
             gtag    = "G-32F16X8HLF"
 

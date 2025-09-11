@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-{{ $params := partial "params-helper.html" . }}
+{{/* Cache params once for all partials */}}
+{{ $existing := .Scratch.Get "anubis2_params" }}
+{{ $params := $existing }}
+{{ if not $existing }}
+  {{ $params = partial "params-helper.html" . }}
+  {{ .Scratch.Set "anubis2_params" $params }}
+{{ end }}
 {{ $dataTheme := "" }}
 
 {{ if and (ne $params.colorTheme "auto") (eq $params.enableColorThemeSwitcher false) }}
