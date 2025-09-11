@@ -1,4 +1,4 @@
-{{ if not (isset site.Params.Anubis2.Services.Disqus "shortname") }}
+{{ if not (isset site.Params.anubis2.services.disqus "shortname") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.disqus, but the parameter 'params.anubis2.services.disqus.shortName' is not set." }}
 {{ end }}
 

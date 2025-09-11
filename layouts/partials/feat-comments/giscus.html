@@ -1,25 +1,25 @@
 <!-- Check parameters -->
-{{ if not (isset site.Params.Anubis2.Services.Giscus "repo") }}
+{{ if not (isset site.Params.anubis2.services.giscus "repo") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.giscus, but the parameter 'params.anubis2.services.giscus.repo' is not set." }}
 {{ end }}
 
-{{ if not (isset site.Params.Anubis2.Services.Giscus "repoid") }}
+{{ if not (isset site.Params.anubis2.services.giscus "repoid") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.giscus, but the parameter 'params.anubis2.services.giscus.repoId' is not set." }}
 {{ end }}
 
-{{ if not (isset site.Params.Anubis2.Services.Giscus "category") }}
+{{ if not (isset site.Params.anubis2.services.giscus "category") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.giscus, but the parameter 'params.anubis2.services.giscus.category' is not set." }}
 {{ end }}
 
-{{ if not (isset site.Params.Anubis2.Services.Giscus "categoryid") }}
+{{ if not (isset site.Params.anubis2.services.giscus "categoryid") }}
     {{ errorf "Anubis2: You enabled params.anubis2.services.giscus, but the parameter 'params.anubis2.services.giscus.categoryId' is not set." }}
 {{ end }}
 
 
 {{ $theme := "preferred_color_scheme" }}
-{{ $mapping := site.Params.Anubis2.Services.Giscus.dataMapping | default "og:title" }} 
-{{ $language := site.Params.Anubis2.Services.Giscus.language | default "en" }} 
-{{ $lazyload := site.Params.Anubis2.Services.Giscus.lazyLoad | default false }} 
+{{ $mapping := site.Params.anubis2.services.giscus.dataMapping | default "og:title" }} 
+{{ $language := site.Params.anubis2.services.giscus.language | default "en" }} 
+{{ $lazyload := site.Params.anubis2.services.giscus.lazyLoad | default false }} 
 
 {{ $params := partial "params-helper.html" . }}
 
@@ -38,10 +38,10 @@
         let giscusTheme = detectCurrentScheme2();
         let giscusAttributes = {
                 src: "https://giscus.app/client.js",
-                "data-repo": "{{- site.Params.Anubis2.Services.Giscus.Repo -}}",
-                "data-repo-id": "{{- site.Params.Anubis2.Services.Giscus.RepoId -}}",
-                "data-category": "{{- site.Params.Anubis2.Services.Giscus.Category -}}",
-                "data-category-id": "{{- site.Params.Anubis2.Services.Giscus.CategoryId -}}",
+                "data-repo": "{{- site.Params.anubis2.services.giscus.repo -}}",
+                "data-repo-id": "{{- site.Params.anubis2.services.giscus.repoId -}}",
+                "data-category": "{{- site.Params.anubis2.services.giscus.category -}}",
+                "data-category-id": "{{- site.Params.anubis2.services.giscus.categoryId -}}",
                 "data-mapping": "{{ $mapping }}",
                 "data-strict": "0",
                 "data-reactions-enabled": "1",
@@ -58,4 +58,3 @@
         Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
         main.appendChild(giscusScript);
 </script>
-
