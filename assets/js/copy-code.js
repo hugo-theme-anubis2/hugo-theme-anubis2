@@ -59,6 +59,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   // Add copy button to code blocks
-  let highlightBlocks = document.getElementsByClassName('highlight');
+  const highlightBlocks = document.getElementsByClassName('highlight');
   Array.prototype.forEach.call(highlightBlocks, addCopyButton);
 }, false);

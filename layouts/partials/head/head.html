@@ -4,9 +4,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer-when-downgrade">
 <meta name="theme-name" content="Anubis2">
+<meta name="theme-version" content="1.5.0">
 
 {{ partial "title.html" . }}
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+<meta name="author" content="{{ with .Params.author }}{{ . }}{{ else }}{{ with site.Params.author }}{{ . }}{{ end }}{{ end -}}">
+<meta name="copyright" content="{{ with site.Params.copyright }}{{ . }}{{ else }}{{ with site.Params.author }}{{ . }}{{ end }}{{ end -}}">
+<meta name="generator" content="Hugo {{ hugo.Version }}">
+<link rel="canonical" href="{{ .Permalink }}">
 
 {{ with .Keywords }}
     <meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }},{{ end }}{{ $e }}{{ end }}">

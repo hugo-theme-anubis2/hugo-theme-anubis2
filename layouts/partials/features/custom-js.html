@@ -3,7 +3,7 @@
 {{ range $params.customJS }}
     <!-- Support remote custom js -->
     {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
-      <script src="{{ . }}" crossorigin="anonymous"></script>
+      <script src="{{ . }}" crossorigin="anonymous" defer></script>
       {{ continue }}
     {{ end }}
 
