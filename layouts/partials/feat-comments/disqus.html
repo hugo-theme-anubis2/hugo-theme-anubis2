@@ -1,6 +1,4 @@
-{{ if not (isset site.Params.Anubis2.Services.Disqus "shortname") }}
-    {{ errorf "Anubis2: You enabled params.anubis2.services.disqus, but the parameter 'params.anubis2.services.disqus.shortName' is not set." }}
-{{ end }}
+{{ $params := partial "params-helper.html" . }}
 
 <div id="disqus_thread"></div>
 <script>
@@ -15,7 +13,7 @@
     */
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
-    s.src = 'https://{{ site.Params.anubis2.services.disqus.shortName }}.disqus.com/embed.js';
+    s.src = 'https://{{ $params.services.disqus.shortname }}.disqus.com/embed.js';
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();

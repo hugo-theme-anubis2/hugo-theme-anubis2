@@ -1,13 +1,13 @@
 {{ $params := partial "params-helper.html" . }}
 
 {{ range $params.customJS }}
-    <!-- Support remote custom css -->
+    <!-- Support remote custom js -->
     {{ if or (hasPrefix . "http") (hasPrefix . "https") }}
-      <script src="{{ . }}" crossorigin="anonymous"></script>
+      <script src="{{ . }}" crossorigin="anonymous" defer></script>
       {{ continue }}
     {{ end }}
 
-    <!-- Load local custom css -->
+    <!-- Load local custom js -->
     {{ $r := "" }}
     {{ with resources.Get .  }}
       {{ $r = . }}

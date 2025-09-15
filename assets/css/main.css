@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: system-ui, -apple-system, "Noto Sans SC", "Microsoft YaHei", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     /* 1 */
     -ms-text-size-adjust: 100%;
     /* 2 */
@@ -207,7 +207,8 @@ pre {
 }
 
 pre:has(code.language-txt) {
-    padding: 0.3em 0.6em 0.3em 0.6em; /* top, right, bottom, left */
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    /* top, right, bottom, left */
 }
 
 /* <kbd> inside <p> */
@@ -271,7 +272,8 @@ div.highlight {
 
 div.highlight div {
     overflow: auto;
-    padding: 0.3em 0em 0.3em 0em; /* top, right, bottom, left */
+    padding: 0.3em 0em 0.3em 0em;
+    /* top, right, bottom, left */
 }
 
 div.highlight pre {
@@ -623,7 +625,6 @@ article header h1 a {
     color: var(--post-info-color);
     font-size: 0.75em;
     margin-top: 1em;
-    margin-bottom: 1em;
     display: block;
     gap: 1em;
 }
@@ -632,7 +633,6 @@ article header h1 a {
     color: var(--post-info-color);
     font-size: 0.75em;
     margin-top: 1em;
-    margin-bottom: 1em;
     display: flex;
     gap: 1em;
 }
@@ -855,6 +855,34 @@ code.has-jax {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+/* Footer utilities */
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-licenses {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-stat-link {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: none;
+    cursor: pointer;
+    color: var(--pagination-link-color);
+}
+
+.footer-beian-icon {
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
 }
 
 ul.language-select,
@@ -888,7 +916,7 @@ ul.footer-menu>li {
 
 .highlight:hover .highlight-copy-btn {
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
 }
 
 .highlight-copy-btn {
@@ -896,7 +924,7 @@ ul.footer-menu>li {
     position: absolute;
     top: 0px;
     right: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--pre-border-color);
     border-radius: 6px;
     padding: 1px;
     font-size: 0.7em;
@@ -915,10 +943,32 @@ ul.footer-menu>li {
     cursor: pointer;
 }
 
+/* Make copy button visible when focused via keyboard */
+.highlight:focus-within .highlight-copy-btn,
+.highlight .highlight-copy-btn:focus,
+.highlight .highlight-copy-btn:focus-visible {
+    display: inline-block;
+    outline: none;
+}
+
 .highlight-copy-btn,
 .highlight-copy-btn svg {
     vertical-align: middle;
     margin: 8px;
+}
+
+/* Touch devices: show button without hover */
+@media (hover: none) and (pointer: coarse) {
+    .highlight .highlight-copy-btn {
+        display: inline-block;
+    }
+}
+
+/* Reduced motion: remove transitions */
+@media (prefers-reduced-motion: reduce) {
+    .highlight-copy-btn {
+        transition: none;
+    }
 }
 
 /* Others */

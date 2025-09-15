@@ -36,7 +36,11 @@
 
             if (currentTheme === 'auto') {
                 autoChangeScheme(autoDefinedScheme);
-                autoDefinedScheme.addListener(autoChangeScheme);
+                if (typeof autoDefinedScheme.addEventListener === 'function') {
+                  autoDefinedScheme.addEventListener('change', autoChangeScheme);
+                } else if (typeof autoDefinedScheme.addListener === 'function') { // Safari < 14
+                  autoDefinedScheme.addListener(autoChangeScheme);
+                }
             } else {
                 document.documentElement.setAttribute('data-theme', currentTheme)
             }

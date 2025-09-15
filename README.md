@@ -17,6 +17,10 @@ Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo
 >
 > Check the [Anubis2 Full Config](./example-site/hugo.full.toml) for the latest full config file.  
 
+Configuration keys are lowercase under `params.anubis2`. If you used older
+camelCase keys (e.g., `googleAnalytics`, `repoId`), please migrate to
+lowercase (e.g., `googleanalytics`, `repoid`). See `PARAMS.md` for details.
+
 
 
 ## Highlighted Features
