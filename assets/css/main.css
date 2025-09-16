@@ -1,10 +1,10 @@
 /* Basic */
 
 :root {
-    --card-border-radius: 0.5em;
-    --card-margin: 1.5em;
-    --icon-margin-left: 1em;
-    --icon-margin-top: 1em;
+    --card-border-radius: 0.5rem;
+    --card-margin: 1.5rem;
+    --icon-margin-left: 1rem;
+    --icon-margin-top: 1rem;
 }
 
 html {
@@ -20,7 +20,7 @@ html {
 
 body {
     margin: 0;
-    font-size: 18px;
+    font-size: 1rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     color: var(--font-color);
@@ -43,7 +43,7 @@ section {
 }
 
 .container {
-    max-width: 42em;
+    max-width: 46rem;
     margin: 0 auto;
 }
 
@@ -57,16 +57,16 @@ main {
     cursor: zoom-in;
     display: block;
 
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding: 0.5em 1em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
     /* top & bottom, left & right */
 
     border: 1px solid var(--card-border-color);
     border-radius: var(--card-border-radius);
     background: var(--card-color);
 
-    font-size: 14px;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -81,16 +81,16 @@ main {
 
 /* Headers */
 h1 {
-    font-size: 1.35em;
+    font-size: 1.35rem;
 }
 
 h2 {
-    font-size: 1.2em;
-    margin-top: 2em;
+    font-size: 1.2rem;
+    margin-top: 2rem;
 }
 
 h3 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 /* Links */
@@ -157,7 +157,7 @@ table {
     border-collapse: collapse;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    font-size: 14px;
+    font-size: 0.8rem;
 }
 
 .highlight table {
@@ -166,7 +166,7 @@ table {
 
 th,
 td {
-    padding: 0.25em 0.5em;
+    padding: 0.25rem 0.5rem;
     border: 1px solid var(--table-border-color);
 }
 
@@ -195,16 +195,17 @@ kbd {
 code {
     font-size: 14.4px;
     /* 18px * 0.6 */
-    padding: 0.1em 0.3em;
+    padding: 0.1rem 0.3rem;
 }
 
 pre {
-    padding: 0.6em;
-    margin-bottom: 1em;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    overflow: auto;
 }
 
 pre:has(code.language-txt) {
-    padding: 0.3em 0.6em 0.3em 0.6em;
+    padding: 0.3em 0.6em 0.3em 0.6rem;
     /* top, right, bottom, left */
 }
 
@@ -224,14 +225,14 @@ pre kbd kbd {
     background-color: var(--kbd-bg-color);
     border: 1px solid var(--pre-border-color);
     border-width: 1px 2px 2px 1px;
-    padding: 0.1em 0.3em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    padding: 0.1rem 0.3rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
 }
 
 p code,
 p kbd {
-    padding: 0.1em 0.3em;
+    padding: 0.1rem 0.3rem;
     /* top, bottom */
     /* margin-right: 4px; */
 }
@@ -263,13 +264,13 @@ td pre code {
 div.highlight {
     border-radius: 6px;
     border: 1px solid var(--pre-border-color);
-    margin-bottom: 14px;
+    margin-bottom: 0.8rem;
     overflow: hidden;
 }
 
 div.highlight div {
     overflow: auto;
-    padding: 0.3em 0em 0.3em 0em;
+    padding: 0.3rem 0rem 0.3rem 0rem;
     /* top, right, bottom, left */
 }
 
@@ -303,20 +304,20 @@ pre kbd {
     color: inherit;
     background-color: inherit;
     border: none;
-    padding: 0em;
+    padding: 0rem;
 }
 
 /* Styles */
 
 blockquote {
     border-left: 2px solid var(--bq-color);
-    padding: 0.1em 1em;
-    margin-left: 0.75em;
+    padding: 0.1rem 1rem;
+    margin-left: 0.75rem;
 }
 
 p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 hr {
@@ -329,7 +330,7 @@ hr {
 /* Header */
 
 .common-header {
-    padding-bottom: 1.5em;
+    padding-bottom: 1.5rem;
     /* border-bottom: thin solid var(--hr-color); */
 }
 
@@ -338,14 +339,14 @@ header a {
 }
 
 header h1 {
-    font-size: 1em;
-    margin-top: 1em;
+    font-size: 1rem;
+    margin-top: 1rem;
     margin-bottom: 0;
     font-weight: normal;
 }
 
 header h2 {
-    font-size: 1em;
+    font-size: 1rem;
     margin: 0;
     font-weight: normal;
 }
@@ -356,7 +357,7 @@ header h2 {
     align-items: center;
     justify-content: space-between;
     vertical-align: middle;
-    margin-top: 1em;
+    margin-top: 1rem;
 }
 
 .header-top-left {
@@ -376,10 +377,10 @@ header nav:not(:empty) {
     margin-top: var(--card-margin);
     max-width: 100%;
     text-align: center;
-    padding: 0.5em 0;
+    padding: 0.5rem 0;
     border: 1px solid var(--card-border-color);
     border-radius: var(--card-border-radius);
-    font-size: 14px;
+    font-size: 0.8rem;
 }
 
 header nav a {
@@ -422,17 +423,17 @@ header nav a {
 
 /* Pages */
 main h1 {
-    margin-top: 0em;
+    margin-top: 0rem;
     font-weight: normal;
-    line-height: 1.1em;
-    margin-bottom: 0.5em;
+    line-height: 1.1rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .post-card {
     border: 1px solid var(--card-border-color) !important;
-    border-radius: 0.5em;
-    padding: 1em 1em 1em 1em;
+    border-radius: 0.5rem;
+    padding: 1rem 1rem 1rem 1rem;
     background: var(--card-color);
 }
 
@@ -441,35 +442,35 @@ article:not(:last-of-type) {
 }
 
 .post-short-list:first-of-type {
-    margin-top: 1em;
+    margin-top: 1rem;
 }
 
 .post-short-list img {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 0 auto .5rem;
 }
 
 .post-short-list video {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 0 auto .5rem;
 }
 
 /* Articles */
 
 .post-short-list .post-header {
-    margin-top: 0.0em;
-    line-height: 1.1em;
-    margin-bottom: 0.5em;
+    margin-top: 0.0rem;
+    line-height: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
 .post-header {
-    margin-top: 0em;
-    line-height: 1.1em;
-    margin-bottom: 1em;
+    margin-top: 0rem;
+    line-height: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .post-header header {
@@ -479,9 +480,9 @@ article:not(:last-of-type) {
 .post-navigation {
     background: var(--nav-bg-color);
     text-align: center;
-    margin-top: 1em;
+    margin-top: 1rem;
     max-width: 100%;
-    padding: 0.5em 0;
+    padding: 0.5rem 0;
 }
 
 .post-navigation a:first-of-type {
@@ -490,7 +491,7 @@ article:not(:last-of-type) {
 
 .post-navigation a {
     color: var(--nav-link-color);
-    margin-left: 2em;
+    margin-left: 2rem;
 }
 
 .post-navigation a:hover,
@@ -510,30 +511,30 @@ article:not(:last-of-type) {
 .post-title.favorite::after {
     content: "🌟";
     display: inline-block;
-    margin-left: 0.2em;
+    margin-left: 0.2rem;
 }
 
 .post-title.draft::after {
     content: "✏️";
     display: inline-block;
-    margin-left: 0.2em;
+    margin-left: 0.2rem;
 }
 
 .post-title.favorite.draft::after {
     content: "🌟 ✏️";
     display: inline-block;
-    margin-left: 0.2em;
+    margin-left: 0.2rem;
 }
 
 /* article:not(:last-of-type) {
     border-bottom: thin solid var(--hr-color);
-    padding-bottom: 2em;
+    padding-bottom: 2rem;
 } */
 
 article header h1 {
-    font-size: 1.35em;
-    line-height: 1.1em;
-    margin-bottom: 0.5em;
+    font-size: 1.35rem;
+    line-height: 1.1rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
     display: inline;
 }
@@ -626,18 +627,18 @@ article header h1 a {
 
 .post-list .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
-    margin-top: 1em;
+    font-size: 0.75rem;
+    margin-top: 1rem;
     display: block;
-    gap: 1em;
+    gap: 1rem;
 }
 
 .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
-    margin-top: 1em;
+    font-size: 0.75rem;
+    margin-top: 1rem;
     display: flex;
-    gap: 1em;
+    gap: 1rem;
 }
 
 .post-info a {
@@ -650,7 +651,7 @@ article header h1 a {
 
 .post-short-list .post-info {
     margin-top: 0;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
 }
 
 .post-taxonomies {
@@ -677,7 +678,7 @@ article header h1 a {
 
 .post-categories li {
     display: inline;
-    margin-right: 1em;
+    margin-right: 1rem;
 }
 
 .post-tags {
@@ -689,7 +690,7 @@ article header h1 a {
 
 .post-tags li {
     display: inline;
-    margin-right: 1em;
+    margin-right: 1rem;
 }
 
 .post-authors {
@@ -701,28 +702,28 @@ article header h1 a {
 
 .post-authors li {
     display: inline;
-    margin-right: 1em;
+    margin-right: 1rem;
 }
 
 article img {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 0 auto .5rem;
 }
 
 article figcaption {
     color: grey;
     text-align: center;
-    font-size: 0.85em;
-    margin-bottom: 2em;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
 }
 
 article video {
     max-width: 100%;
     display: block;
     height: auto;
-    margin: 0 auto .5em;
+    margin: 0 auto .5rem;
 }
 
 code.has-jax {
@@ -733,7 +734,7 @@ code.has-jax {
 }
 
 .read-more {
-    margin: 1em 0;
+    margin: 1rem 0;
 }
 
 .divider {
@@ -742,11 +743,11 @@ code.has-jax {
     height: 1px;
     border: 0;
     width: 25%;
-    margin: 1em auto;
+    margin: 1rem auto;
 }
 
 .post-summary {
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
     display: block;
 }
 
@@ -755,11 +756,11 @@ code.has-jax {
 }
 
 .post-translations {
-    margin-left: 0.5em;
+    margin-left: 0.5rem;
     list-style: none;
     padding: 0;
     display: inline;
-    font-size: 14px;
+    font-size: 0.8rem;
 }
 
 .post-translations>li {
@@ -784,8 +785,8 @@ code.has-jax {
 
 .read-next-title {
     margin-bottom: 0;
-    margin-top: 3em;
-    padding-top: 1em;
+    margin-top: 3rem;
+    padding-top: 1rem;
     border-top: 1px dashed var(--thead-bg-color);
 }
 
@@ -799,7 +800,7 @@ code.has-jax {
 .terms {
     list-style-type: none;
     padding: 0;
-    line-height: 2em;
+    line-height: 2rem;
 }
 
 /* Pagination */
@@ -807,7 +808,7 @@ code.has-jax {
 .pagination {
     display: flex;
     justify-content: space-between;
-    margin-top: 3em;
+    margin-top: 3rem;
     text-align: center;
 }
 
@@ -815,7 +816,7 @@ code.has-jax {
     border: 1px solid var(--pagination-border-color);
     border-radius: var(--pagination-border-radius);
     background: var(--pagination-bg-color);
-    padding: 0.25em 0.75em;
+    padding: 0.25rem 0.75rem;
 }
 
 .pagination-item a {
@@ -840,16 +841,16 @@ code.has-jax {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 16em;
+    max-width: 16rem;
 }
 
 /* Footer */
 
 .common-footer {
-    padding-top: 1.5em;
-    margin-top: 3em;
+    padding-top: 1.5rem;
+    margin-top: 3rem;
     font-size: 12px;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
     color: var(--pagination-link-color);
 }
 
@@ -858,7 +859,7 @@ code.has-jax {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
 }
 
 /* Footer utilities */
@@ -883,8 +884,8 @@ code.has-jax {
 }
 
 .footer-beian-icon {
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
     object-fit: contain;
 }
 
@@ -897,12 +898,12 @@ ul.footer-menu {
 
 ul.language-select>li,
 ul.footer-menu>li {
-    margin-right: 1em;
+    margin-right: 1rem;
 }
 
 .theme-switcher {
     color: var(--switcher-color);
-    /* padding: 0.5em 1em; */
+    /* padding: 0.5rem 1rem; */
     margin: var(--icon-margin-top) 0 0 var(--icon-margin-left);
     cursor: pointer;
 }
@@ -930,7 +931,7 @@ ul.footer-menu>li {
     border: 1px solid var(--pre-border-color);
     border-radius: 6px;
     padding: 1px;
-    font-size: 0.7em;
+    font-size: 0.7rem;
     line-height: 1.8;
     color: #fff;
     background-color: rgba(255, 255, 255, 0.1);
@@ -1010,21 +1011,21 @@ ul.footer-menu>li {
     }
 
     .pagination-item {
-        padding: 0.5em 0.5em;
-        font-size: 14px;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.8rem;
     }
 
     .post-navigation {
         background: var(--pagination-bg-color);
         text-align: center;
-        padding: 0.5em 0;
+        padding: 0.5rem 0;
     }
 
     .post-navigation a {
-        margin-left: 0.5em;
+        margin-left: 0.5rem;
     }
 
     .post-pagination .pagination-item {
-        max-width: 10em;
+        max-width: 10rem;
     }
 }
