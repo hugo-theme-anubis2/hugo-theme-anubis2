@@ -533,7 +533,6 @@ article:not(:last-of-type) {
 
 article header h1 {
     font-size: 1.35rem;
-    line-height: 1.1rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
     display: inline;
@@ -543,6 +542,7 @@ article header h1 a {
     color: var(--font-color);
     border: none;
     text-decoration: none;
+    line-height: 2rem;
 }
 
 .post h1,
