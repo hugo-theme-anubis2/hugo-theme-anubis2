@@ -1,36 +1,4 @@
 {{ define "main" }}
-    layouts/_default/list.html
-    <div class="index-content">
-        {{ .Content }}
-    </div>
-
-    <div class="articles h-feed">
-        <h1 class="post-title">{{ i18n .Title | markdownify }}</h1>
-        {{ $showFullContent := in site.Params.sectionsWithFullContentOnListPage .Section }}
-        {{ $pages := where .Pages "Params.hidden" "!=" true}}
-
-        {{ $pagesRange := $pages}}
-        {{ if $showFullContent }}
-            {{ $pagesRange = (.Paginate $pages).Pages }}
-        {{ end}}
-
-        {{ range $pagesRange }}
-            <div class="post-short-list h-entry">
-                <div class="post-header">
-                    <header>
-                        <h2 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}"><a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h2>
-                        {{ partial "post-language-switcher.html" . }}
-                    </header>
-                </div>
-                {{ if $showFullContent }}
-                    {{ .Content }}
-                {{ end }}
-                {{ partial "post-info.html" . }}
-            </div>
-        {{ end }}
-        {{ if $showFullContent }}
-            {{ partial "pagination.html" . }}
-        {{ end}}
-    </div>
-
+Anubis2 Fallback page
+<code>layouts/_default/list.html</code>
 {{ end }}

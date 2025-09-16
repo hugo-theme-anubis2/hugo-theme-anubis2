@@ -1,12 +1,6 @@
 {{ $params := partial "params-helper.html" . }}
 
 {{ if or (eq $params.enableColorThemeSwitcher true) (eq $params.colorTheme "auto") }}
-    {{ if $params.enableColorThemeSwitcher }}
-        <div class="theme-switcher">
-            {{ partial "features/font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
-        </div>
-    {{ end }}
-
     <script>
         const STORAGE_KEY = 'user-color-scheme'
         const defaultTheme = "{{ $params.colorTheme }}"
@@ -31,7 +25,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            switchButton = document.querySelector('.theme-switcher')
+            switchButton = document.querySelector('#theme-toggle')
             currentTheme = detectCurrentScheme()
 
             if (currentTheme === 'auto') {

@@ -1,7 +1,14 @@
-<ul class="social-icons noselect">
-
 {{ $params := partial "params-helper.html" . }}
-
+<ul class="social-icons noselect">
+{{ if or (eq $params.enableColorThemeSwitcher true) (eq $params.colorTheme "auto") }}
+    {{ if $params.enableColorThemeSwitcher }}
+        <li>
+            <a href="#" id="theme-toggle">
+            {{ partial "features/font-awesome.html" (dict "iconName" "theme-light" "custom" false) }}
+            </a>
+        </li>
+    {{ end }}
+{{ end }}
 
 {{ range $params.socialIcons }}
     {{ if and (isset site.Data.social.social_icons .id) (isset . "url") }}

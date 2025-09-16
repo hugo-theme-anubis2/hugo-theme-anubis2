@@ -22,7 +22,6 @@
                 {{ partial "head/header.html" . }}
             {{ end }}
         </header>
-        {{ .Kind }}
         <main id="main" tabindex="-1">
             {{ block "main" . }}
                 {{ print "No content found for " .Title " with kind " .Kind }}

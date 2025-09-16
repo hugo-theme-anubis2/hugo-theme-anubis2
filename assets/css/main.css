@@ -15,6 +15,7 @@ html {
     -webkit-text-size-adjust: 100%;
     /* 2 */
     scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 body {
@@ -85,11 +86,7 @@ h1 {
 
 h2 {
     font-size: 1.2em;
-    margin-top: 3em;
-}
-
-h2:first-of-type {
-    margin-top: 0;
+    margin-top: 2em;
 }
 
 h3 {
@@ -425,7 +422,7 @@ header nav a {
 
 /* Pages */
 main h1 {
-    margin-top: 1em;
+    margin-top: 0em;
     font-weight: normal;
     line-height: 1.1em;
     margin-bottom: 0.5em;
@@ -435,7 +432,7 @@ main h1 {
 .post-card {
     border: 1px solid var(--card-border-color) !important;
     border-radius: 0.5em;
-    padding: 0em 1em 1em 1em;
+    padding: 1em 1em 1em 1em;
     background: var(--card-color);
 }
 
@@ -470,7 +467,7 @@ article:not(:last-of-type) {
 }
 
 .post-header {
-    margin-top: 1em;
+    margin-top: 0em;
     line-height: 1.1em;
     margin-bottom: 1em;
 }
