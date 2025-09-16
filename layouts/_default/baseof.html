@@ -22,12 +22,21 @@
                 {{ partial "head/header.html" . }}
             {{ end }}
         </header>
+        {{ .Kind }}
         <main id="main" tabindex="-1">
-            {{ block "main" . }}{{ end }}
+            {{ block "main" . }}
+                {{ print "No content found for " .Title " with kind " .Kind }}
+                {{ print "Please create a custom layout for this kind, or use single.html as fallback." }}
+            {{ end }}
         </main>
-        {{ block "footer" . }}
-            {{ partial "footer.html" . }}
-        {{ end }}
+        <footer class="common-footer noselect">
+            {{ block "footer" . }}
+                <!-- By default, the footer will be rendered here -->
+                <!-- if user provided custom footer, it will be rendered instead -->
+                <!-- See more: https://gohugo.io/functions/go-template/define/ -->
+                {{ partial "footer.html" . }}
+            {{ end }}
+        </footer>
     </div>
 </body>
 </html>

@@ -463,6 +463,12 @@ article:not(:last-of-type) {
 
 /* Articles */
 
+.post-short-list .post-header {
+    margin-top: 0.0em;
+    line-height: 1.1em;
+    margin-bottom: 0.5em;
+}
+
 .post-header {
     margin-top: 1em;
     line-height: 1.1em;

@@ -1,11 +1,9 @@
 {{ define "main" }}
-    layouts/_default/list.html
-    <div class="index-content">
-        {{ .Content }}
-    </div>
-
     <div class="articles h-feed">
         <h1 class="post-title">{{ i18n .Title | markdownify }}</h1>
+        <div style="font-size: 0.75rem; color: var(--post-info-color); margin-bottom: 1em;">
+            <p style="margin-top: 0px;">{{ len .Pages }} {{ i18n (.Title | humanize) | markdownify }}</p>
+        </div>
         {{ $showFullContent := in site.Params.sectionsWithFullContentOnListPage .Section }}
         {{ $pages := where .Pages "Params.hidden" "!=" true}}
 

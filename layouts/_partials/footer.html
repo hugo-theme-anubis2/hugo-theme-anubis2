@@ -1,55 +1,53 @@
-<footer class="common-footer noselect">
-    {{ $params := partial "params-helper.html" . }}
+{{ $params := partial "params-helper.html" . }}
 
-    {{ if gt (len site.Home.AllTranslations) 1 }}
-        {{ partial "language-switcher.html" . }}
+{{ if gt (len site.Home.AllTranslations) 1 }}
+    {{ partial "language-switcher.html" . }}
+{{ end }}
+
+<div class="common-footer-bottom">
+    {{ if site.Menus.footer }}
+        {{ $currentPage := . }}
+        <ul class="footer-menu">
+        {{ range site.Menus.footer }}
+        <li><a class="{{ if or ($currentPage.IsMenuCurrent "footer" .) ($currentPage.HasMenuCurrent "footer" .) }} active{{ end }}" href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+        {{ end }}
+        </ul>
     {{ end }}
 
-    <div class="common-footer-bottom">
-        {{ if site.Menus.footer }}
-            {{ $currentPage := . }}
-            <ul class="footer-menu">
-            {{ range site.Menus.footer }}
-            <li><a class="{{ if or ($currentPage.IsMenuCurrent "footer" .) ($currentPage.HasMenuCurrent "footer" .) }} active{{ end }}" href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name }}</a></li>
-            {{ end }}
-            </ul>
-        {{ end }}
-
-        <div class="footer-meta">
-            <!-- site.Params.Author.name is universal by hugo -->
-            © {{ with site.Params.author.name }}{{ . }}, {{ end }}{{ now.Year }}
-            {{ with $params.services.umami.shareurl }}
-            <a aria-label="Check statistics data" class="footer-stat-link" href="{{ . }}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg>
-            </a>
-            {{ end }}
-        </div>
-
-        <div class="footer-licenses">
-            {{ $lang := lower site.Language.Lang }}
-            {{ $isZh := hasPrefix $lang "zh" }}
-            {{ if and $params.police $isZh }}
-                {{ $info := "info" }}
-                {{ $pattern := "[0-9]+" }}
-                {{ $matches := findRE $pattern $params.police }}
-                {{ if $matches }}
-                    {{ $firstNumber := index $matches 0 }}
-                    {{ $info = print  $firstNumber }}
-                    <img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="备案图标" class="footer-beian-icon">
-                    <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{ $info }}">{{ $params.police }}</a>
-                    &nbsp;
-                {{ end }}
-            {{ end }}
-
-            {{ if and $params.icp $isZh }}
-                <a target="_blank" href="https://beian.miit.gov.cn/">{{ $params.icp }}</a>
-            {{ end }}
-        </div>
-
-        {{ if not $params.hideFooterAttribution }}
-            <div>
-                {{ i18n "powered" }} <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, {{ i18n "theme" }} <a target="_blank" rel="noopener noreferrer" href="https://github.com/hugo-theme-anubis2/hugo-theme-anubis2">Anubis2</a>.<br>
-            </div>
+    <div class="footer-meta">
+        <!-- site.Params.Author.name is universal by hugo -->
+        © {{ with site.Params.author.name }}{{ . }}, {{ end }}{{ now.Year }}
+        {{ with $params.services.umami.shareurl }}
+        <a aria-label="Check statistics data" class="footer-stat-link" href="{{ . }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /><path d="M9 17v-5" /><path d="M12 17v-1" /><path d="M15 17v-3" /></svg>
+        </a>
         {{ end }}
     </div>
-</footer>
+
+    <div class="footer-licenses">
+        {{ $lang := lower site.Language.Lang }}
+        {{ $isZh := hasPrefix $lang "zh" }}
+        {{ if and $params.police $isZh }}
+            {{ $info := "info" }}
+            {{ $pattern := "[0-9]+" }}
+            {{ $matches := findRE $pattern $params.police }}
+            {{ if $matches }}
+                {{ $firstNumber := index $matches 0 }}
+                {{ $info = print  $firstNumber }}
+                <img src="https://beian.mps.gov.cn/img/logo01.dd7ff50e.png" alt="备案图标" class="footer-beian-icon">
+                <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode={{ $info }}">{{ $params.police }}</a>
+                &nbsp;
+            {{ end }}
+        {{ end }}
+
+        {{ if and $params.icp $isZh }}
+            <a target="_blank" href="https://beian.miit.gov.cn/">{{ $params.icp }}</a>
+        {{ end }}
+    </div>
+
+    {{ if not $params.hideFooterAttribution }}
+        <div>
+            {{ i18n "powered" }} <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, {{ i18n "theme" }} <a target="_blank" rel="noopener noreferrer" href="https://github.com/hugo-theme-anubis2/hugo-theme-anubis2">Anubis2</a>.<br>
+        </div>
+    {{ end }}
+</div>

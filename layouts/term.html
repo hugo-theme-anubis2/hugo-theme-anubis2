@@ -1,0 +1,39 @@
+{{ define "main" }}
+    <h1>{{ i18n .Data.Singular | humanize | markdownify }}: {{ .Title | markdownify }}</h1>
+    <div style="font-size: 0.75rem; color: var(--post-info-color)">
+        <a ></a>
+        <a style="margin-top: 0px;" href="{{ (print .Data.Plural "/") | relLangURL }}">{{ i18n (printf "toAll%s" (.Data.Plural | humanize )) | humanize }}</a>
+    </div>
+
+    <ul class="terms">
+        {{ range .Data.Terms }}
+            {{ $postsNum := len (where .Pages "Params.hidden" "!=" true) }}
+            {{ if gt $postsNum 0 }}
+                <li>
+                    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title | markdownify }}</a>
+                    ({{ $postsNum }})
+                </li>
+            {{ end}}
+        {{ end }}
+    </ul>
+
+     <div class="articles h-feed">
+        {{ $pages := where .Pages "Params.hidden" "!=" true}}
+
+        {{ $pagesRange := $pages}}
+       
+        {{ range $pagesRange }}
+            <div class="post-short-list h-entry">
+                <div class="post-header">
+                    <header>
+                        <h2 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}"><a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h2>
+                        {{ partial "post-language-switcher.html" . }}
+                    </header>
+                </div>
+                
+                {{ partial "post-info.html" . }}
+            </div>
+        {{ end }}
+    </div>
+
+{{ end }}
