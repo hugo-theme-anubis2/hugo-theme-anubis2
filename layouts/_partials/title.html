@@ -1,1 +1,5 @@
-<title>{{ if and (.Title) (not .IsHome) }}{{ .Title | markdownify }} - {{ end }}{{ site.Title | markdownify }}</title>
+{{ if .Params.private }}
+    <title>Private Page - {{ site.Title | markdownify }}</title>
+{{ else }}
+    <title>{{ if and (.Title) (not .IsHome) }}{{ .Title | markdownify }} - {{ end }}{{ site.Title | markdownify }}</title>
+{{ end }}

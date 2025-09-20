@@ -1,18 +1,20 @@
 {{ define "main" }}
     <div class="articles h-feed">
+        {{ $pages := where .Pages "Params.private" "!=" true}}
         <h1 class="post-title">{{ i18n .Title | markdownify }}</h1>
         <div style="font-size: 0.75rem; color: var(--post-info-color); margin-bottom: 1rem;">
-            <p style="margin-top: 0px;">{{ len .Pages }} {{ i18n (.Title | humanize) | markdownify }}</p>
+            <p style="margin-top: 0px;">{{ len $pages }} {{ i18n (.Title | humanize) | markdownify }}</p>
         </div>
         {{ $showFullContent := in site.Params.sectionsWithFullContentOnListPage .Section }}
-        {{ $pages := where .Pages "Params.hidden" "!=" true}}
 
         {{ $pagesRange := $pages}}
+
         {{ if $showFullContent }}
             {{ $pagesRange = (.Paginate $pages).Pages }}
         {{ end}}
 
         {{ range $pagesRange }}
+            
             <div class="post-short-list h-entry">
                 <div class="post-header">
                     <header>
