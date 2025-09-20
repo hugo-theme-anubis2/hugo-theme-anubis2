@@ -21,6 +21,9 @@ paginationSinglePost = true
 rssIcon = false
 locale = "en-us"
 
+[services.rss]
+limit = 40 # how many posts to include in the feed
+
 [params.anubis2]
     hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
 
