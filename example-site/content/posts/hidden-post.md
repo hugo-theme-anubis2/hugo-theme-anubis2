@@ -6,7 +6,7 @@ description = "Post available only by link"
 tags = [
     "privacy"
 ]
-hidden = true
+private = true
 +++
 
 This is hidden post

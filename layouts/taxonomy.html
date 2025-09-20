@@ -1,11 +1,16 @@
 {{ define "main" }}
     <h1>{{ i18n .Data.Singular | humanize | markdownify }}</h1>
+    {{ $pages := where .Pages "Params.private" "!=" true }}
     <div style="font-size: 0.75rem; color: var(--post-info-color)">
-        <p style="margin-top: 0px;">{{ len .Pages }} {{ i18n (.Data.Plural | humanize) | markdownify }}</p>
+        <p style="margin-top: 0px;">{{ len $pages }} {{ i18n (.Data.Plural | humanize) | markdownify }}</p>
     </div>
-
-    {{ range $key, $value := .Pages }}
-        <p><a href="{{ .RelPermalink }}">{{ .Title }} {{ .Content }}</a>({{ len .Data.Pages }})</p>
+    
+    {{ range .Data.Terms }}
+        {{ $nonPrivatePages := where .Pages "Params.private" "!=" true }}
+        {{ $postsNum := len $nonPrivatePages }}
+        {{ if gt $postsNum 0 }}
+            <p><a href="{{ .Page.RelPermalink }}">{{ .Page.Title | markdownify }}</a> ({{ $postsNum }})</p>
+        {{ end}}
     {{ end }}
 
 {{ end }}

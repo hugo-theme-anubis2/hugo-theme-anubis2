@@ -7,7 +7,7 @@
 
     <ul class="terms">
         {{ range .Data.Terms }}
-            {{ $postsNum := len (where .Pages "Params.hidden" "!=" true) }}
+            {{ $postsNum := len (where .Pages "Params.private" "!=" true) }}
             {{ if gt $postsNum 0 }}
                 <li>
                     <a href="{{ .Page.RelPermalink }}">{{ .Page.Title | markdownify }}</a>
@@ -18,7 +18,7 @@
     </ul>
 
      <div class="articles h-feed">
-        {{ $pages := where .Pages "Params.hidden" "!=" true}}
+        {{ $pages := where .Pages "Params.private" "!=" true}}
 
         {{ $pagesRange := $pages}}
        
