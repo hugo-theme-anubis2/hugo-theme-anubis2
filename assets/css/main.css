@@ -762,7 +762,8 @@ code.has-jax {
     list-style: none;
     padding: 0;
     display: inline;
-    font-size: 14px;
+    font-size: 12px;
+    color: var(--font-color);
 }
 
 .post-translations>li {
@@ -812,6 +813,7 @@ code.has-jax {
     justify-content: space-between;
     margin-top: 3em;
     text-align: center;
+    font-size: 14px;
 }
 
 .pagination-item {

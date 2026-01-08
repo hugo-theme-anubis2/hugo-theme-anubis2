@@ -2,7 +2,7 @@
 title: "Demo - Summary Rendering Test 8 (💀 Nightmare)"
 date: 2024-04-25T1:54:19+08:00
 draft: true
-hidden: true
+private: true
 tags: [Hugo]
 ---
 <!--<!--more-->

@@ -2,7 +2,7 @@
 title: "Demo - Summary Rendering Test 6 (🤯 Hard)"
 date: 2024-04-25T1:54:17+08:00
 draft: true
-hidden: true
+private: true
 tags: [Hugo]
 ---
 
