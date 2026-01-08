@@ -1,6 +1,7 @@
 @media (prefers-color-scheme: light) {
   html {
-    --font-color: #1e1e1e;
+    --title-color: hsl(0, 0%, 10%);
+    --font-color: hsl(0, 0%, 15%);
     --bg-color: #ffffff;
 
     --card-color: #fafafa;
@@ -38,7 +39,7 @@
   }
 }
 html[data-theme="light"] {
-  --font-color: #1e1e1e;
+  --font-color: hsl(0, 0%, 15%);
   --bg-color: #ffffff;
 
   --card-color: #fafafa;

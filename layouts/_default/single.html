@@ -32,7 +32,7 @@
     {{ $params := partial "params-helper.html" . }}
     {{ $readNextPosts := $params.readNextPosts }}
     {{ if gt $readNextPosts 0 }}
-        {{ $related := site.RegularPages.Related . | first $readNextPosts }}
+        {{ $related := (where (site.RegularPages.Related .) "Params.private" "ne" true) | first $readNextPosts }}
         {{ with $related }}
             <h3 class="read-next-title noselect">{{ i18n "readNext" }}</h3>
             <ul class="read-next-posts noselect">

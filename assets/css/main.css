@@ -84,8 +84,9 @@ h1 {
 }
 
 h2 {
+    color: var(--title-color);
     font-size: 1.2em;
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 h2:first-of-type {
@@ -93,6 +94,7 @@ h2:first-of-type {
 }
 
 h3 {
+    color: var(--title-color);
     font-size: 1.1em;
 }
 
@@ -337,11 +339,12 @@ hr {
 }
 
 header a {
-    color: var(--font-color);
+    color: var(--title-color);
 }
 
 header h1 {
-    font-size: 1em;
+    color: var(--title-color);
+    font-size: 18px;
     margin-top: 1em;
     margin-bottom: 0;
     font-weight: normal;
@@ -464,6 +467,7 @@ article:not(:last-of-type) {
 /* Articles */
 
 .post-header {
+    font-size: 14px;
     margin-top: 1em;
     line-height: 1.1em;
     margin-bottom: 1em;
@@ -529,14 +533,14 @@ article:not(:last-of-type) {
 
 article header h1 {
     font-size: 1.35em;
-    line-height: 1.1em;
+    line-height: 1.5em;
     margin-bottom: 0.5em;
     font-weight: 600;
     display: inline;
 }
 
 article header h1 a {
-    color: var(--font-color);
+    color: var(--title-color);
     border: none;
     text-decoration: none;
 }
@@ -623,7 +627,7 @@ article header h1 a {
 
 .post-list .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
+    font-size: 12px;
     margin-top: 1em;
     display: block;
     gap: 1em;
@@ -631,7 +635,7 @@ article header h1 a {
 
 .post-info {
     color: var(--post-info-color);
-    font-size: 0.75em;
+    font-size: 12px;
     margin-top: 1em;
     display: flex;
     gap: 1em;
@@ -731,6 +735,7 @@ code.has-jax {
 
 .read-more {
     margin: 1em 0;
+    font-size: 14px;
 }
 
 .divider {
@@ -745,6 +750,7 @@ code.has-jax {
 .post-summary {
     margin-top: 0.5em;
     display: block;
+    font-size: 14px;
 }
 
 .post-summary>p {
@@ -1024,4 +1030,8 @@ ul.footer-menu>li {
     .post-pagination .pagination-item {
         max-width: 10em;
     }
+}
+
+.e-content {
+    font-size: 16px;
 }
