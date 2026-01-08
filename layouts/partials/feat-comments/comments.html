@@ -1,13 +1,13 @@
 {{ $params := partial "params-helper.html" . }}
 
-{{ if and $params.services (in $params.services "disqus")}}
+{{ if and $params.services (isset $params.services "disqus")}}
     {{ partial "feat-comments/disqus.html" . }}
 {{ end }}
 
-{{ if and $params.services (in $params.services "giscus")}}
+{{ if and $params.services (isset $params.services "giscus")}}
     {{ partial "feat-comments/giscus.html" . }}
 {{ end }}
 
-{{ if and $params.services (in $params.services "utterances")}}
+{{ if and $params.services (isset $params.services "utterances")}}
     {{ partial "feat-comments/utterances.html" . }}
 {{ end }}
