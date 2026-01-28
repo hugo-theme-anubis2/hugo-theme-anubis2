@@ -40,6 +40,7 @@
 }
 /* Same as above.  */
 html[data-theme='dark'] {
+    --title-color: #f0f0f0;
     --font-color: #dadadb;
     --bg-color: #1d1e20;
 
