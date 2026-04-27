@@ -40,6 +40,7 @@ locale = "en-us"
     icp = "京ICP备xxxxx号-1" # for China ICP license
 
     ## Social Icons
+    # Prefer explicit url entries. Name-based shortcuts depend on social data lookup in templates.
     socialIcons = [
         { id = "docs", url = "https://gohugo.io/documentation/" },
         { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },

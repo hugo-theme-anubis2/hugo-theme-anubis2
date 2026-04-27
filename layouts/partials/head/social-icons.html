@@ -3,15 +3,16 @@
 {{ $params := partial "params-helper.html" . }}
 
 
+{{ $socialData := hugo.Data.social.social_icons }}
 {{ range $params.socialIcons }}
-    {{ if and (isset site.Data.social.social_icons .id) (isset . "url") }}
+    {{ if and (isset $socialData .id) (isset . "url") }}
         <li>
             <a {{ printf "href=%q" .url | safeHTMLAttr }} title="{{ humanize .id }}" aria-label="{{ humanize .id }}" rel="me">
             {{ partial "features/font-awesome.html" (dict "iconName" .id "custom" false) }}
             </a>
         </li>
-    {{ else if and (isset site.Data.social.social_icons .id) (isset . "name") }}
-        {{ $url := index site.Data.social.social_icons .id }}
+    {{ else if and (isset $socialData .id) (isset . "name") }}
+        {{ $url := index $socialData .id }}
         {{ $ref := printf $url .name }}
         <li>
             <a {{ printf "href=%q" $ref | safeHTMLAttr }} title="{{ humanize .id }}" aria-label="{{ humanize .id }}" rel="me">
