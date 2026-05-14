@@ -1,6 +1,10 @@
 {{- $pctx := . -}}
 {{- if .IsHome -}}{{ $pctx = site }}{{- end -}}
 {{- $pages := where (where $pctx.RegularPages ".Params.disable_feed" "!=" true) "Params.private" "!=" true -}}
+{{- if .IsHome -}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $pages = where $pages "Type" "in" $mainSections -}}
+{{- end -}}
 {{- $limit := site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}

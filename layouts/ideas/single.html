@@ -1,0 +1,50 @@
+{{ define "main" }}
+<article class="idea-card h-entry">
+
+  <header class="idea-card__header">
+    <div class="idea-card__title-row">
+      <h1 class="idea-card__title p-name">{{ .Title }}</h1>
+      {{ partial "post-language-switcher.html" . }}
+    </div>
+    <div class="idea-card__meta">
+      <time class="dt-published" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{- with index .Params.tags 0 }}
+        <span class="idea-card__meta-sep">&middot;</span>
+        <span class="idea-card__primary-tag">{{ . }}</span>
+      {{- end }}
+      {{- with .Params.status }}
+        <span class="idea-card__meta-sep">&middot;</span>
+        <span class="idea-card__status idea-card__status--{{ . }}">{{ . }}</span>
+      {{- end }}
+    </div>
+  </header>
+
+  {{- with .Params.question }}
+  <section class="idea-card__question">
+    <span class="idea-card__question-glyph" aria-hidden="true">?</span>
+    <p>{{ . }}</p>
+  </section>
+  {{- end }}
+
+  <section class="idea-card__timeline">
+    {{ .Content }}
+  </section>
+
+  {{- with .Params.key_takeaway }}
+  <section class="idea-card__takeaway">
+    <div class="idea-card__takeaway-label">key takeaway</div>
+    <p class="idea-card__takeaway-text">{{ . }}</p>
+  </section>
+  {{- end }}
+
+  {{- with .Params.tags }}
+  <footer class="idea-card__tags">
+    <span class="idea-card__tags-label">tags</span>
+    {{- range . }}
+      <a class="idea-card__tag p-category" href="{{ "tags/" | relLangURL }}{{ . | urlize }}/">#{{ . }}</a>
+    {{- end }}
+  </footer>
+  {{- end }}
+
+</article>
+{{ end }}

@@ -1,0 +1,15 @@
+{{- $name := .Get "name" -}}
+{{- $ai := .Get "ai" -}}
+{{- $slug := $name | urlize -}}
+<div class="idea-step idea-step--{{ $slug }}">
+  <div class="idea-step__marker" aria-hidden="true"></div>
+  <div class="idea-step__body">
+    <div class="idea-step__name">{{ $name }}</div>
+    <div class="idea-step__prose">
+      {{ .Inner | $.Page.RenderString }}
+      {{- with $ai }}
+        <div class="idea-step__ai-excerpt">&rarr; {{ . }}</div>
+      {{- end }}
+    </div>
+  </div>
+</div>

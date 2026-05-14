@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="idea-list">
+
+  <header class="idea-list__header">
+    <h1 class="idea-list__title">{{ .Title | lower }}</h1>
+    <div class="idea-list__intro">{{ .Content }}</div>
+  </header>
+
+  <ul class="idea-list__entries h-feed">
+    {{- range .Pages.ByDate.Reverse }}
+    <li class="idea-list__entry h-entry">
+      <a class="idea-list__entry-link u-url" href="{{ .RelPermalink }}">
+        <div class="idea-list__entry-meta">
+          <time class="dt-published" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          {{- with .Params.status }}
+            <span class="idea-list__meta-sep">&middot;</span>
+            <span class="idea-list__status idea-list__status--{{ . }}">{{ . }}</span>
+          {{- end }}
+          {{- with index .Params.tags 0 }}
+            <span class="idea-list__meta-sep">&middot;</span>
+            <span class="idea-list__primary-tag">#{{ . }}</span>
+          {{- end }}
+        </div>
+        <h2 class="idea-list__entry-title p-name">{{ .Title }}</h2>
+        {{- with .Params.question }}
+          <div class="idea-list__entry-question">
+            <span class="idea-list__glyph" aria-hidden="true">?</span>
+            <span>{{ . }}</span>
+          </div>
+        {{- end }}
+        <div class="idea-list__entry-takeaway">
+          <span class="idea-list__glyph" aria-hidden="true">&#9656;</span>
+          {{- with .Params.key_takeaway }}
+            <span>{{ . }}</span>
+          {{- else }}
+            <span class="idea-list__entry-takeaway--empty">&mdash; still raw</span>
+          {{- end }}
+        </div>
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+
+</div>
+{{ end }}
