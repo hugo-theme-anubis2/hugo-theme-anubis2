@@ -1,0 +1,13 @@
+.footnotes {
+  color: var(--post-info-color);
+  font-size: 0.875rem;
+}
+
+.footnotes a:not(:hover):not(:focus):not(:active),
+.footnotes code {
+  color: inherit;
+}
+
+.footnotes code {
+  font-size: 0.9em;
+}

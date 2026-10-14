@@ -1,0 +1,146 @@
+/* Keep long URLs and technical names inside the reading column. */
+:is(.e-content, .post-summary) {
+  overflow-wrap: anywhere;
+}
+
+:is(.e-content, .post-summary) pre {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+/* Wide data tables scroll independently of the page, like code blocks. */
+:is(.e-content, .post-summary) table:not(.highlight table) {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-wrap: normal;
+}
+
+.e-content :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.45;
+  scroll-margin-top: 1rem;
+}
+
+.e-content h2 {
+  margin-top: 2em;
+}
+
+@media (max-width: 840px) {
+  .container {
+    width: auto;
+    max-width: 46rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  /* One scrollable row in both languages, with comfortably sized targets. */
+  .common-header nav:not(:empty) {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    font-size: 0.875rem;
+  }
+
+  .common-header nav a {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 0.625rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .common-header {
+    padding-bottom: 1.25rem;
+  }
+
+  .header-top {
+    padding-block: 0.5rem;
+  }
+
+  article.post .post-header header > .post-title {
+    display: block;
+    margin: 0;
+    font-size: 1.375rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .post-header .post-translations {
+    display: block;
+    margin: 0.5rem 0 0;
+  }
+
+  .post-info {
+    flex-wrap: wrap;
+    gap: 0.375rem 0.75rem;
+    line-height: 1.7;
+  }
+
+  .post-taxonomies,
+  .post-taxonomies :is(ul.post-categories, ul.post-tags, ul.post-authors) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .post-taxonomies li {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .e-content,
+  .post-summary {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .toc {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .toc .inner {
+    margin-top: 0.5rem;
+    font-weight: normal;
+  }
+
+  .toc a {
+    display: inline-block;
+    padding-block: 0.25rem;
+  }
+
+  .e-content blockquote {
+    margin-inline: 0;
+    padding-inline: 0.875rem;
+  }
+
+  article.post .content figure figcaption {
+    padding: 0.625rem 0.75rem;
+    text-align: start;
+    line-height: 1.65;
+  }
+
+  .e-content :not(pre) > code {
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .read-next-posts li {
+    margin-block: 0.5rem;
+    line-height: 1.6;
+  }
+}

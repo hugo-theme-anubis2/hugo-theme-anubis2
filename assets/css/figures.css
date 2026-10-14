@@ -1,0 +1,18 @@
+article.post .content figure {
+  margin: 1.5rem 0;
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+article.post .content figure img,
+article.post .content figure video,
+article.post .content figure > svg {
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+article.post .content figure figcaption {
+  margin: 0;
+  padding: 0.75rem 1rem;
+}
