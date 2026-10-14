@@ -12,7 +12,7 @@ See the [README](README.md) for installation and [PARAMS.md](PARAMS.md) for conf
 - Wide data tables and code blocks scroll within the reading column.
 - Figure captions, smaller muted footnotes, and decorative article link icons.
 
-The mobile and article styling above was added in [d1e038d](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/commit/d1e038d), after `v1.8.0`. It is available on `main` and revisions containing that commit.
+The mobile and article styling improvements are included in **v1.9.0**. See the [release notes](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/releases/tag/v1.9.0) for upgrade guidance.
 
 ## Technical writing
 

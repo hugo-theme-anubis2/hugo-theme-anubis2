@@ -19,7 +19,7 @@ A minimal Hugo theme for personal blogs and technical writing, with readable cod
 - Mobile reading layouts: single-row scrollable navigation, responsive titles, and independently scrolling code blocks and wide tables.
 - Figure captions, smaller muted footnotes, and subtle icons on article text links.
 
-The mobile and article styling improvements were added in [d1e038d](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/commit/d1e038d), after the `v1.8.0` tag. Use `main` or a later revision containing that commit to get them.
+The mobile and article styling improvements are included in **v1.9.0**. See the [release notes](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/releases/tag/v1.9.0) for changes and upgrade guidance.
 
 <img src="images/mobile-light.jpg" width="320" alt="Anubis2 example article at a 390-pixel phone viewport, with single-row navigation, a responsive title, and wrapped metadata">
 
