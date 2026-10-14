@@ -1,134 +1,183 @@
-# Anubis2 Theme for Hugo [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Netlify Status](https://api.netlify.com/api/v1/badges/750dfb45-73dc-4a96-8920-e701e0196959/deploy-status)](https://app.netlify.com/sites/hugo-theme-anubis2/deploys)
+# Anubis2 for Hugo
 
-Anubis2 is another simple minimalist theme for [Hugo blog engine](https://gohugo.io/), check our [Demo](https://hugo-theme-anubis2.netlify.app/).
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE) [![Netlify Status](https://api.netlify.com/api/v1/badges/750dfb45-73dc-4a96-8920-e701e0196959/deploy-status)](https://app.netlify.com/sites/hugo-theme-anubis2/deploys)
 
-![image](./images/demo1.png)
+A minimal Hugo theme for personal blogs and technical writing, with readable code, multilingual pages, and light and dark modes.
 
-|                                                        Light                                                         |                                                     Dark (Code)                                                      |                                                     Dark (Math)                                                      |
-| :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
-| <img width="1166" alt="demo1" src="./images/light.png"> | <img width="1112" alt="demo3" src="./images/dark.png"> | <img width="1166" alt="demo2" src="./images/math.png"> |
+[Live demo](https://hugo-theme-anubis2.netlify.app/) · [Features](Features.md) · [Parameters](PARAMS.md) · [Full example configuration](example-site/hugo.full.toml)
 
+| Light | Dark |
+| --- | --- |
+| ![Article in light mode](images/light.png) | ![Article with code in dark mode](images/dark.png) |
 
-> [!IMPORTANT]  
-> **Update Your Blog Configuration**  
-> Please ensure your blog configuration file (`hugo.toml`, `hugo.yaml`, or `hugo.json`) is updated to the latest version provided with the template.
-> 
-> **Hugo frequently changes its configuration file structure**, which may lead to compatibility issues if your configuration is outdated.
->
-> Check the [Anubis2 Full Config](./example-site/hugo.full.toml) for the latest full config file.  
+## Features
 
-Configuration keys are lowercase under `params.anubis2`. If you used older
-camelCase keys (e.g., `googleAnalytics`, `repoId`), please migrate to
-lowercase (e.g., `googleanalytics`, `repoid`). See `PARAMS.md` for details.
+- Light, dark, and system-following color modes, with a manual switcher.
+- Multilingual pages, language switching, and RSS feeds.
+- Collapsible table of contents, syntax highlighting, code copying, Mermaid diagrams, and opt-in MathJax.
+- Giscus, Disqus, and Utterances comments; Google Analytics and Umami integration.
+- Mobile reading layouts: single-row scrollable navigation, responsive titles, and independently scrolling code blocks and wide tables.
+- Figure captions, smaller muted footnotes, and subtle icons on article text links.
 
+The mobile and article styling improvements were added in [d1e038d](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/commit/d1e038d), after the `v1.8.0` tag. Use `main` or a later revision containing that commit to get them.
 
+<img src="images/mobile-light.jpg" width="320" alt="Anubis2 example article at a 390-pixel phone viewport, with single-row navigation, a responsive title, and wrapped metadata">
 
-## Highlighted Features
+## Quick start
 
-- Multilingual
-- Dark / Light mode (Automatic switch based on system settings)
-- Table of Contents
-- Comment Support (Giscus, Disque, ISSO, Utterances, GraphComment)
-- Analytics (Google, Umami)
-- RSS feeds
-- Mobile Support
-- [Full Features](wiki/Full-Features)
+Install [Hugo](https://gohugo.io/installation/) and Git. The quick start and both example configurations have been verified with **Hugo extended 0.167.0**. This is a tested version, not a claimed minimum; older versions have not been validated as part of this update. The built-in styles use plain CSS. Additional Sass requirements are described below.
 
-## Installation & Configuration
-
-You need to install an extended version of Hugo to run this theme.
-
-For more information read the [official setup guide of Hugo](https://gohugo.io/installation/).
-
-### Install theme as Git Submodule
-
-Inside the folder of your Hugo site, run:
+### Create a site and install the theme
 
 ```bash
+hugo new site my-blog
+cd my-blog
+git init
 git submodule add https://github.com/hugo-theme-anubis2/hugo-theme-anubis2.git themes/anubis2
 ```
 
-That's all, let's configure anubis2.
+For an existing Hugo site, run only the submodule command from the site root; initialize Git first if needed.
 
-### Configure your site
+For a new site, replace the generated configuration with the minimal example:
 
-Don't be panic, configure Anubis2 is really **simple**.
+```bash
+cp themes/anubis2/example-site/hugo.minimal.toml hugo.toml
+```
 
-**This is the minimum configuration:**
+The minimal configuration is:
 
 ```toml
-baseURL = "/"
-languageCode = "en-us"
-title = "Anubis2 Demo Site"
+baseURL = "https://example.org/"
+locale = "en-us"
+title = "My Blog"
 theme = "anubis2"
 
 [pagination]
 pagerSize = 5
 
 [params.author]
-name = "Junyi"
+name = "Your Name"
 
+[params.anubis2]
+colortheme = "auto"
+
+[markup.goldmark.renderer]
+unsafe = true # Render raw HTML such as figures in Markdown.
+```
+
+Set `baseURL` to your deployed site's address and replace the title and author. When adapting an existing site, merge the relevant settings instead of replacing your configuration.
+
+### Create a post and preview it
+
+```bash
+hugo new content posts/hello-world.md
+hugo server -D
+```
+
+Add Markdown below the front matter in `content/posts/hello-world.md`, then open [localhost:1313](http://localhost:1313/). New posts are drafts; `-D` includes them in the preview. Set `draft = false` in TOML front matter (or `draft: false` in YAML) when the post is ready to publish, then run `hugo` to build the site into `public/`.
+
+When cloning a site that already uses this theme, initialize its submodules before building:
+
+```bash
+git submodule update --init --recursive
+```
+
+## Common configuration
+
+Theme settings belong under `params.anubis2`. These docs use lowercase parameter keys consistently. Hugo normalizes keys in `params`, so existing camelCase settings such as `colorTheme` and `repoId` also work; they do not need a case-only migration.
+
+For navigation, add menu entries to `hugo.toml`. A menu item links to a page; it does not create that page.
+
+```toml
 [[menu.main]]
-identifier = "home"
 name = "Home"
 url = "/"
 weight = 1
 
 [[menu.main]]
-identifier = "about"
-name = "About"
-url = "/about/"
-weight = 2
-
-[[menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
-weight = 3
-
-[[menu.main]]
 name = "Archive"
-identifier = "archive"
 url = "/posts/"
-weight = 4
-
-[markup.goldmark.renderer]
-unsafe = true # Enable unsafe mode to have a better experience
-
-[markup.highlight]
-style              = 'catppuccin-frappe' # Find more style at here: https://swapoff.org/chroma/playground/
-
-[params.anubis2]
-  # Leave all parameters empty to use the default values.
-
+weight = 2
 ```
 
-You are encouraged keeping other fields as defaults and fine-tune them when you have time!
+Add social links to your existing `[params.anubis2]` table:
 
-In the other way, you can check out the example site's [configuration file](example-site/hugo.full.toml)
+```toml
+socialicons = [
+  { id = "github", url = "https://github.com/your-name" },
+  { id = "email", url = "mailto:you@example.org" }
+]
+```
 
-## Run your site
+See [PARAMS.md](PARAMS.md) for defaults, per-page options, and service configuration. The [full example](example-site/hugo.full.toml) also demonstrates language-specific menus. Its comments and analytics use demo accounts: replace those service tables with your own settings, or remove them.
 
-In order to see your site, run Hugo's built-in local server.
+## Custom styles
+
+Create `assets/css/custom.css` in your site and add the following to your existing `[params.anubis2]` table:
+
+```toml
+customcss = ["css/custom.css"]
+```
+
+Paths are relative to `assets/`. Custom CSS loads after the theme styles, so you can override them without editing the theme submodule. For example, to remove the decorative article link icons:
+
+```css
+article.post .content a[href]::after {
+  content: none !important;
+}
+```
+
+### Optional Sass/SCSS
+
+Plain CSS needs no Sass compiler. For custom `.scss` or `.sass` assets, install [Dart Sass](https://gohugo.io/functions/css/sass/#dart-sass) on both your development and build hosts, and add these settings to `[params.anubis2]`:
+
+```toml
+csstranspiler = "dartsass"
+customcss = ["css/custom.scss"]
+```
+
+The theme's compatibility default is `libsass`, which requires Hugo extended. Hugo deprecated LibSass in v0.153.0; use Dart Sass for new Sass customizations. The full example keeps its Sass demonstration commented out so it can build without an additional compiler.
+
+## Updating
+
+From your site's root, update only this theme:
 
 ```bash
-hugo server
+git submodule update --remote themes/anubis2
+hugo
 ```
 
-Now enter [`http://localhost:1313`](http://localhost:1313/) in the address bar of your browser to open your site.
-
-## Update Anubis2 to the latest version
-
-In your Hugo site folder, run this command:
+Review the site locally with `hugo server -D`. Once satisfied, commit the updated theme reference so deployments use the same revision:
 
 ```bash
-git submodule update --remote
+git add themes/anubis2
+git commit -m "chore: update Anubis2 theme"
 ```
+
+This follows the submodule's configured branch, or the remote's default branch when none is configured. To keep builds reproducible, commit the reference rather than running `--remote` during every deployment.
+
+## Troubleshooting and migration
+
+- **New post missing:** preview with `hugo server -D`, or set `draft = false` (TOML) / `draft: false` (YAML) for publication. Future-dated posts need `--buildFuture` when previewing.
+- **Theme not found after cloning:** run `git submodule update --init --recursive`.
+- **Deprecated top-level theme parameters:** move settings such as `params.colorTheme` into `params.anubis2`. Consult [PARAMS.md](PARAMS.md) for renamed options; capitalization alone is not the migration issue.
+- **LibSass warning:** use plain CSS, or install Dart Sass and set `csstranspiler = "dartsass"`.
+- **Raw HTML omitted:** enable `[markup.goldmark.renderer] unsafe = true` if you want raw HTML in your Markdown, including HTML figures. Both example configurations enable this setting.
+- **Math not rendered:** set `math: true` in the page front matter, or enable `enablemathglobally` under `params.anubis2`.
+- **Analytics absent in local preview:** analytics are injected only in production builds. Use `hugo --environment production` to inspect that output.
 
 ## Contributing
 
-If you find a bug or have an idea for a feature, feel free to write an [issue](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/issues) or make a PR.
+Report bugs and feature requests in [Issues](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/issues), or open a pull request. For rendering issues, include your Hugo version, relevant configuration, and a small content example.
+
+To preview the example site from a theme checkout, run the full example configuration (the minimal example also builds, with fewer features enabled):
+
+```bash
+hugo server --source example-site --config hugo.full.toml --themesDir ../.. --theme "$(basename "$PWD")" -D
+```
+
+To build instead of serving, use `hugo` in place of `hugo server`. To check the minimal configuration, replace `hugo.full.toml` with `hugo.minimal.toml`.
 
 ## License
 
-MIT © Junyi, 2024
+[MIT](LICENSE) © Junyi, 2024.

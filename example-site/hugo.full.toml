@@ -16,64 +16,61 @@ avatar = "https://avatars.githubusercontent.com/u/123456789?v=4"
 [params]
 description = "Anubis2 is another simple minimalist theme for Hugo blog engine."
 dateFormat = "2006-01-02"
-paginationSinglePost = true
-
-rssIcon = false
-locale = "en-us"
 
 [services.rss]
 limit = 40 # how many posts to include in the feed
 
 [params.anubis2]
-    hideFooterAttribution = false # hide "Powered by Hugo, theme" in footer
+    hidefooterattribution = false # hide "Powered by Hugo, theme" in footer
 
-    enableMathGlobally = true # MathJax (default is false)
-    enableCopyCodeButton = true
-    enableSummary = true # the summary is the preview of the post, if you disable it, the post will be shown only with the title.
-    enableReadMoreButton = false
-    enableRssIcon = true
-    enableColorThemeSwitcher = true
-    colorTheme = "auto"
-    openInNewTab = true # open links in new tab
-    
-    tocWordCount = 0 # 0: disable toc. N: show toc if the post has more than N words.
-    readNextPosts = 10 # 0: disable this feature. 1: show 1 related posts. N: show N related posts.
+    enablemathglobally = true # MathJax (default is false)
+    enablecopycodebutton = true
+    enablesummary = true # the summary is the preview of the post, if you disable it, the post will be shown only with the title.
+    enablereadmorebutton = false
+    enablerssicon = true
+    enablecolorthemeswitcher = true
+    colortheme = "auto"
+    openinnewtab = true # open links in new tab
+
+    tocwordcount = 0 # 0: disable automatic ToC. N: show it at or above N words when headings exist.
+    readnextposts = 10 # 0: disable this feature. 1: show 1 related posts. N: show N related posts.
 
     police = "京公网安备 12345678号" # for China ICP police beian
     icp = "京ICP备xxxxx号-1" # for China ICP license
 
     ## Social Icons
     # Prefer explicit url entries. Name-based shortcuts depend on social data lookup in templates.
-    socialIcons = [
-        { id = "docs", url = "https://gohugo.io/documentation/" },
+    socialicons = [
+        # { id = "docs", url = "https://gohugo.io/documentation/" },
         { id = "github", url = "https://github.com/hugo-theme-anubis2/hugo-theme-anubis2" },
-        { id = "x", url = "#" },
-        { id = "linkedin", url = "https://www.linkedin.com/" },
-        { id = "email", url = "example@example.com" }
+        # { id = "linkedin", url = "https://www.linkedin.com/in/your-name/" },
+        # { id = "email", url = "mailto:example@example.com" }
     ]
 
-    customCSS = [
-        "custom-css/custom1.scss", 
+    # Plain CSS builds without Sass. For the optional SCSS demo:
+    # csstranspiler = "dartsass"
+    customcss = [
+        # "custom-css/custom1.scss", # Optional: install Dart Sass and set csstranspiler above.
         "custom-css/custom2.css",
         "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     ]
 
-    customJS = [
-        "https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
-    ]
+    # Optional: add your own assets/js/custom.js before enabling.
+    # customjs = ["js/custom.js"]
 
+    # Demo accounts below belong to this theme. Replace them or remove the tables for your site.
     [params.anubis2.services]
         [params.anubis2.services.giscus]
             # Giscus Comment System https://giscus.app/
             repo        = "hugo-theme-anubis2/hugo-theme-anubis2"
-            repoId      = "R_kgDOLEp76Q"
+            repoid      = "R_kgDOLEp76Q"
             category    = "General"
-            categoryId  = "DIC_kwDOLEp76c4CcbPS"
-            dataMapping = "pathname"
-            lazyLoad    = false
+            categoryid  = "DIC_kwDOLEp76c4CcbPS"
+            datamapping = "pathname"
+            lazyload    = false
 
         # [params.anubis2.services.disqus]
-        #   shortName = "junyide-xiao-wu"
+        #   shortname = "junyide-xiao-wu"
 
         # [params.anubis2.services.utterances]
         #   repo = "hugo-theme-anubis2/hugo-theme-anubis2"

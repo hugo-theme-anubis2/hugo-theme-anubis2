@@ -1,0 +1,16 @@
+baseURL = "https://example.org/"
+locale = "en-us"
+title = "My Blog"
+theme = "anubis2"
+
+[pagination]
+pagerSize = 5
+
+[params.author]
+name = "Your Name"
+
+[params.anubis2]
+colortheme = "auto"
+
+[markup.goldmark.renderer]
+unsafe = true # Render raw HTML such as figures in Markdown.

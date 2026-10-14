@@ -1,32 +1,35 @@
-# Features
+# Anubis2 features
 
-1. Automatic Dark/Light mode based on system settings
-2. Dark/Light mode switcher
-3. Automatic Diagram dark/light switch
-4. Automatic Giscus dark/light switch
+See the [README](README.md) for installation and [PARAMS.md](PARAMS.md) for configuration and defaults.
 
-| Feature (light/dark mode)                                              | Anubis2 |
-| ---------------------------------------------------------------------- | ------- |
-| Line Number (table) and Hilight Lines                                  | ✅       |
-| Line Number (true) and Hilight Lines                                   | ✅       |
-| Line Number (inline) and Hilight Lines                                 | ✅       |
-| Line Number (false) and Hilight Lines                                  | ✅       |
-| Line Number (table) and Hilight Lines and Anchor Line                  | ✅       |
-| Line Number (table) and Hilight Inline                                 | ✅       |
-| Highlight Shortcode, Line Number (table) and Hilight Lines and Anchor  | ✅       |
-| Highlight Shortcode, Line Number (inline) and Hilight Lines and Anchor | ✅       |
-| Highlight Shortcode, Line Number (false) and Hilight Lines and Anchor  | ✅       |
-| Mermaid Support (No Config, Lazy Load, Dark/Light Auto Switch)         | ✅       |
-| MathJax Support (No Config, Lazy Load, Dark/Light Auto Switch)         | ✅       |
-| Giscus Support (Dark/Light Auto Switch)                                | ✅       |
-| Umami Support (Dark/Light Auto Switch)                                 | ✅       |
-| Multi-Author Support                                                   | ✅       |
-| Multi-Language Support                                                 | ✅       |
-| Support for \<code\> tag                                               | ✅       |
-| Support for \<pre\> tag                                                | ✅       |
-| Support for \<kbd\> tag                                                | ✅       |
-| Support for \<mark\> tag                                               | ✅       |
-| Passed CodePreKbdMark test                                             | ✅       |
-| Passed All 8 Summary Rendering Tests                                   | ✅ 8/8   |
-| Mermaid dark/light manual switch                                       | ✅       |
-| Mermaid dark/light auto switch                                         | ✅       |
+## Reading and navigation
+
+- Light, dark, and system-following color modes with a manual switcher.
+- Multilingual pages and language switching.
+- Collapsible table of contents, post summaries, related posts, and RSS.
+- Mobile navigation stays on one line and scrolls horizontally when needed.
+- Mobile article titles and language links occupy separate lines; metadata wraps naturally.
+- Wide data tables and code blocks scroll within the reading column.
+- Figure captions, smaller muted footnotes, and decorative article link icons.
+
+The mobile and article styling above was added in [d1e038d](https://github.com/hugo-theme-anubis2/hugo-theme-anubis2/commit/d1e038d), after `v1.8.0`. It is available on `main` and revisions containing that commit.
+
+## Technical writing
+
+- Syntax highlighting, line numbers, highlighted lines, and code copying.
+- Mermaid fenced code blocks with light/dark theme handling.
+- MathJax, enabled with page front matter `math: true` or the global `enablemathglobally` option.
+- Styled inline code, keyboard shortcuts, blockquotes, and callout shortcodes.
+- Optional human-written declaration badge via `humanDeclared: true`.
+
+## Integrations and customization
+
+- Comments: Giscus, Disqus, and Utterances. Giscus follows the site's color mode.
+- Analytics: Google Analytics and Umami, included only in production builds.
+- Social icons, including custom SVG icons.
+- Custom CSS, optional Sass/SCSS, and custom JavaScript.
+- Canonical URLs, translated-page alternate links, and structured data.
+
+## Example content
+
+The [example site](example-site/content/posts/) includes Markdown, code, math, diagram, and summary-rendering examples. These are demonstration fixtures, not a claim of automated test coverage.
